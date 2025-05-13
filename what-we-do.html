@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What We Do - Voices of Truth</title>
+  <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
+</head>
+<body class="bg-white text-gray-900 m-0 p-0" dir="ltr">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md w-full h-[64px] relative z-50">
+    <div class="w-full flex justify-between items-stretch h-full">
+      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
+        <span data-translate="site-title">Voices<br>of Truth</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
+        <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
+        <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
+        <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
+      </nav>
+      <div class="flex items-center space-x-2 rtl:space-x-reverse">
+        <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+        </button>
+        <div class="hidden md:block">
+          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">العربية</button>
+        </div>
+        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
+      <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
+      <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
+      <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
+      <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <section class="bg-gray-100 p-8 text-center">
+    <h1 class="text-3xl font-bold" data-translate="what-title">What We Do</h1>
+    <p class="mt-2 max-w-2xl mx-auto text-gray-700" data-translate="what-subtitle">
+      Discover how we drive real-world change through action, advocacy, and solidarity.
+    </p>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto p-6 space-y-6">
+    <p data-translate="what-intro">
+      <strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.
+    </p>
+    <ul class="list-disc pl-6 space-y-2" data-translate="what-list">
+      <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
+      <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
+      <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
+      <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
+    </ul>
+    <p data-translate="what-ending">
+      Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-6 mt-10">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+      <div>
+        <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Facebook</a></li>
+          <li><a href="#" class="hover:underline">Twitter</a></li>
+          <li><a href="#" class="hover:underline">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    const translations = {
+      en: {
+        "site-title": "Voices<br>of Truth",
+        "nav-who": "Who We Are",
+        "nav-what": "What We Do",
+        "nav-involved": "Get Involved",
+        "donate": "Donate Now",
+        "what-title": "What We Do",
+        "what-subtitle": "Discover how we drive real-world change through action, advocacy, and solidarity.",
+        "what-intro": "<strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.",
+        "what-list": `
+          <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
+          <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
+          <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
+          <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
+        `,
+        "what-ending": "Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.",
+        "follow-us": "Follow us on:"
+      },
+      ar: {
+        "site-title": "أصوات<br>الحقيقة",
+        "nav-who": "من نحن",
+        "nav-what": "ماذا نفعل",
+        "nav-involved": "شارك",
+        "donate": "تبرع الآن",
+        "what-title": "ماذا نفعل",
+        "what-subtitle": "اكتشف كيف نُحدث تغييراً حقيقياً من خلال العمل والمناصرة والتضامن.",
+        "what-intro": "<strong>أصوات الحقيقة</strong> تلتزم بالدفاع عن حقوق الإنسان، وكشف الظلم، ودعم المجتمعات في الأزمات. نحن نعمل عبر الحدود لإيصال صوت من لا صوت لهم وبناء عالم أفضل.",
+        "what-list": `
+          <li><strong>توثيق انتهاكات حقوق الإنسان:</strong> نبحث ونبلغ عن الانتهاكات لمحاسبة الجناة.</li>
+          <li><strong>إطلاق حملات عالمية:</strong> تسلط حملاتنا الضوء على القضايا العاجلة وتحث الناس على التحرك.</li>
+          <li><strong>تمكين المجتمع:</strong> نتعاون مع المجموعات المحلية لبناء أدوات من أجل عدالة وتغيير مستدامين.</li>
+          <li><strong>المناصرة السياسية:</strong> نضغط على الحكومات والمؤسسات لحماية الحريات والحقوق الأساسية.</li>
+        `,
+        "what-ending": "سواء في محاربة الرقابة، أو الدفاع عن سجناء الرأي، أو مواجهة الفساد، تظل رسالتنا واحدة: العدالة والكرامة والمساواة للجميع.",
+        "follow-us": "تابعنا على:"
+      }
+    };
+
+    let currentLang = localStorage.getItem("language") || "en";
+
+    function applyLanguage() {
+      document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.documentElement.lang = currentLang;
+
+      const langToggle = document.getElementById("lang-toggle");
+      const langMobile = document.getElementById("lang-toggle-mobile");
+      if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
+      if (langMobile) langMobile.textContent = currentLang === "ar" ? "English" : "العربية";
+
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      localStorage.setItem("language", currentLang);
+      applyLanguage();
+    }
+
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("#main-nav a").forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("text-green-700", "font-semibold");
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", applyLanguage);
+  </script>
+</body>
+</html>
