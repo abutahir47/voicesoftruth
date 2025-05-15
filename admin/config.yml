@@ -36,18 +36,3 @@ collections:
             fields:
               - { label: "Video Title", name: "title", widget: "string" }
               - { label: "YouTube URL", name: "url", widget: "string" }
-
-  - name: "otherpages"
-    label: "Other Pages"
-    files:
-      - label: "What We Do"
-        name: "whatwedo"
-        file: "what-we-do.html"
-        fields:
-          - { label: "Main Section Text", name: "body", widget: "text" }
-
-      - label: "Get Involved"
-        name: "getinvolved"
-        file: "get-involved.html"
-        fields:
-          - { label: "Main Section Text", name: "body", widget: "text" }
