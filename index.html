@@ -57,32 +57,28 @@
   <main class="p-6 max-w-6xl mx-auto space-y-10">
     <section>
       <h3 class="text-2xl font-bold mb-6 text-center" data-translate="video-title">Featured Videos</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="videoContainer">
         <!-- Video 1 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/XfqogJzC_PU" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe src="https://www.youtube.com/embed/AcFEffqsHzc" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
           <p class="mt-3 text-center text-sm font-medium" data-translate="video-1">What We Stand For</p>
         </div>
-
         <!-- Video 2 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/h7ONqvB3P1U" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe src="https://www.youtube.com/embed/4fqvnpjE8OU" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
           <p class="mt-3 text-center text-sm font-medium" data-translate="video-2">Raising Our Voice</p>
         </div>
-
         <!-- Video 3 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/PjI4n-N57g0" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe src="https://www.youtube.com/embed/6hwR1P2rCrY" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
           <p class="mt-3 text-center text-sm font-medium" data-translate="video-3">Hope Through Action</p>
         </div>
-
       </div>
     </section>
   </main>
@@ -93,14 +89,20 @@
       <div>
         <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
         <ul class="space-y-1">
-          <li><a href="#" class="hover:underline">Facebook</a></li>
-          <li><a href="#" class="hover:underline">Twitter</a></li>
-          <li><a href="#" class="hover:underline">Instagram</a></li>
+          <li>
+            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
+          </li>
         </ul>
       </div>
     </div>
   </footer>
-
+  
   <!-- Scripts -->
   <script>
     const translations = {
@@ -114,7 +116,7 @@
         "hero-text": "Join Voices of Truth in making a difference. We fight for justice, equality, and freedom where it's needed most.",
         "video-title": "Featured Videos",
         "video-1": "What We Stand For",
-        "video-2": "Raising Our Voice",
+        "video-2": "Who Are HTS",
         "video-3": "Hope Through Action",
         "follow-us": "Follow us on:"
       },
@@ -128,14 +130,13 @@
         "hero-text": "انضم إلى أصوات الحقيقة لإحداث فرق. نحن نحارب من أجل العدالة والمساواة والحرية في الأماكن التي تمس الحاجة إليها.",
         "video-title": "فيديوهات مميزة",
         "video-1": "ما نمثله",
-        "video-2": "نرفع صوتنا",
+        "video-2": "من هم هيئة تحرير الشام",
         "video-3": "الأمل من خلال العمل",
         "follow-us": "تابعنا على:"
       }
     };
 
     let currentLang = localStorage.getItem("language") || "en";
-
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
       const langToggle = document.getElementById("lang-toggle");
