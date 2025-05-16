@@ -135,20 +135,15 @@
 
       const hero = document.getElementById("whatHeroSection");
       if (hero) {
-        if (what.heroBg) {
-          hero.style.backgroundImage = `url('${what.heroBg}')`;
-        }
+        if (what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
 
-        // Separate control for desktop vs mobile
-        const isMobile = window.innerWidth < 768;
-        const desktopHeight = what.heroHeight || '300px';
-        const mobileHeight = what.heroHeightMobile || desktopHeight;
+        const screenWidth = window.innerWidth;
+        const mobileHeight = what.heroHeightMobile || what.heroHeight || '250px';
+        const desktopHeight = what.heroHeight || '400px';
 
-        const finalHeight = isMobile ? mobileHeight : desktopHeight;
-
-        hero.style.height = finalHeight;
-        hero.style.minHeight = finalHeight;
+        hero.style.height = screenWidth < 768 ? mobileHeight : desktopHeight;
+        hero.style.minHeight = screenWidth < 768 ? mobileHeight : desktopHeight;
       }
 
       const title = document.getElementById("whatHeroTitle");
