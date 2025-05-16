@@ -139,10 +139,15 @@
           hero.style.backgroundImage = `url('${what.heroBg}')`;
         }
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
-        if (what.heroHeight) {
-          hero.style.height = what.heroHeight;
-          hero.style.minHeight = what.heroHeight;
-        }
+
+        const isMobile = window.innerWidth < 768;
+        const fallbackHeight = "250px";
+        const mobileHeight = what.heroHeightMobile || fallbackHeight;
+        const desktopHeight = what.heroHeight || fallbackHeight;
+
+        const appliedHeight = isMobile ? mobileHeight : desktopHeight;
+        hero.style.height = appliedHeight;
+        hero.style.minHeight = appliedHeight;
       }
 
       const title = document.getElementById("whatHeroTitle");
