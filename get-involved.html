@@ -2,14 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Involved - Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
 </head>
 <body class="bg-white text-gray-900 m-0 p-0" dir="ltr">
 
-  <!-- Header omitted for brevity -->
+  <!-- Header -->
+  <header class="bg-white shadow-md w-full h-[64px] relative z-50">
+    <div class="w-full flex justify-between items-stretch h-full">
+      <!-- Left: Logo -->
+      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
+        <span data-translate="site-title">Voices<br>of Truth</span>
+      </a>
 
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
+        <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
+        <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
+        <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
+      </nav>
+
+      <!-- Burger + Language + Donate -->
+      <div class="flex items-center space-x-2 rtl:space-x-reverse">
+        <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+        </button>
+        <div class="hidden md:block">
+          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">العربية</button>
+        </div>
+        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
+      <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
+      <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
+      <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
+      <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
   <section class="bg-gray-100 p-8 text-center">
     <h1 class="text-3xl font-bold" data-translate="involved-title">Get Involved</h1>
     <p class="mt-2 max-w-2xl mx-auto text-gray-700" data-translate="involved-subtitle">
@@ -17,14 +54,96 @@
     </p>
   </section>
 
+  <!-- Main Content -->
   <main class="max-w-4xl mx-auto p-6 space-y-6">
     <p id="page3Text"></p>
   </main>
 
-  <!-- Footer omitted for brevity -->
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-6">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+      <div>
+        <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
+        <ul class="space-y-1">
+          <li>
+            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
+  <!-- Scripts -->
   <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    const translations = {
+      en: {
+        "site-title": "Voices<br>of Truth",
+        "nav-who": "Who We Are",
+        "nav-what": "What We Do",
+        "nav-involved": "Get Involved",
+        "donate": "Donate Now",
+        "involved-title": "Get Involved",
+        "involved-subtitle": "Whether you have time, skills, or energy to share-there's a place for you in our movement.",
+        "follow-us": "Follow us on:"
+      },
+      ar: {
+        "site-title": "أصوات<br>الحقيقة",
+        "nav-who": "من نحن",
+        "nav-what": "ماذا نفعل",
+        "nav-involved": "شارك",
+        "donate": "تبرع الآن",
+        "involved-title": "شارك",
+        "involved-subtitle": "سواء كان لديك وقت، مهارات، أو طاقة-هناك مكان لك في حركتنا.",
+        "follow-us": "تابعنا على:"
+      }
+    };
+
+    let currentLang = localStorage.getItem("language") || "en";
+
+    function applyLanguage() {
+      document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
+      document.documentElement.lang = currentLang;
+
+      const langToggle = document.getElementById("lang-toggle");
+      const langMobile = document.getElementById("lang-toggle-mobile");
+      if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
+      if (langMobile) langMobile.textContent = currentLang === "ar" ? "English" : "العربية";
+
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === "en" ? "ar" : "en";
+      localStorage.setItem("language", currentLang);
+      applyLanguage();
+    }
+
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("#main-nav a").forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("text-green-700", "font-semibold");
+      }
+    });
+
+    // Dynamically load page3 text from admin panel data (localStorage)
     document.addEventListener("DOMContentLoaded", function() {
+      applyLanguage();
       const data = JSON.parse(localStorage.getItem('siteContent')) || {};
       document.getElementById('page3Text').innerHTML = (data.page3 && data.page3.text) || `
         <strong>Getting involved</strong> with Voices of Truth means becoming part of a growing network of changemakers, advocates, and everyday people ready to make a difference.
@@ -38,6 +157,5 @@
       `;
     });
   </script>
-
 </body>
 </html>
