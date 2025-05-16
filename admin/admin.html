@@ -9,49 +9,21 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col items-center p-6">
 
   <div class="w-full max-w-3xl bg-white rounded-lg shadow-md p-8 space-y-8">
-    <h1 class="text-3xl font-bold text-center">Admin Panel</h1>
-
-    <!-- Home Page -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Home Page Videos</h2>
-      <div class="space-y-6">
-        <div>
-          <label class="block font-medium mb-1" for="homeVideo1Title">Video 1 Title</label>
-          <input type="text" id="homeVideo1Title" class="w-full border rounded px-3 py-2" placeholder="Enter Video 1 Title" />
-          <label class="block font-medium mt-3 mb-1" for="homeVideo1Url">Video 1 URL (YouTube URL, raw)</label>
-          <input type="text" id="homeVideo1Url" class="w-full border rounded px-3 py-2" placeholder="https://www.youtube.com/watch?v=..." />
-        </div>
-        <div>
-          <label class="block font-medium mb-1" for="homeVideo2Title">Video 2 Title</label>
-          <input type="text" id="homeVideo2Title" class="w-full border rounded px-3 py-2" placeholder="Enter Video 2 Title" />
-          <label class="block font-medium mt-3 mb-1" for="homeVideo2Url">Video 2 URL (YouTube URL, raw)</label>
-          <input type="text" id="homeVideo2Url" class="w-full border rounded px-3 py-2" placeholder="https://www.youtube.com/watch?v=..." />
-        </div>
-        <div>
-          <label class="block font-medium mb-1" for="homeVideo3Title">Video 3 Title</label>
-          <input type="text" id="homeVideo3Title" class="w-full border rounded px-3 py-2" placeholder="Enter Video 3 Title" />
-          <label class="block font-medium mt-3 mb-1" for="homeVideo3Url">Video 3 URL (YouTube URL, raw)</label>
-          <input type="text" id="homeVideo3Url" class="w-full border rounded px-3 py-2" placeholder="https://www.youtube.com/watch?v=..." />
-        </div>
-      </div>
-    </section>
-
-    <!-- Who We Are Page -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Who We Are Page Video</h2>
-      <label class="block font-medium mb-1" for="whoVideoUrl">Video URL (YouTube URL, raw)</label>
-      <input type="text" id="whoVideoUrl" class="w-full border rounded px-3 py-2" placeholder="https://www.youtube.com/watch?v=..." />
-    </section>
+    <h1 class="text-3xl font-bold text-center mb-6">Admin Panel</h1>
 
     <!-- What We Do Page -->
     <section>
       <h2 class="text-xl font-semibold mb-4 border-b pb-2">What We Do Page</h2>
+      
       <label class="block font-medium mb-1" for="whatHeroTitle">Hero Section Title</label>
       <input type="text" id="whatHeroTitle" class="w-full border rounded px-3 py-2" placeholder="Hero Title" />
+
       <label class="block font-medium mt-3 mb-1" for="whatHeroSubtitle">Hero Section Subtitle</label>
       <input type="text" id="whatHeroSubtitle" class="w-full border rounded px-3 py-2" placeholder="Hero Subtitle" />
+
       <label class="block font-medium mt-3 mb-1" for="whatHeroBg">Hero Section Background Image URL</label>
       <input type="text" id="whatHeroBg" class="w-full border rounded px-3 py-2" placeholder="https://example.com/image.jpg" />
+
       <label class="block font-medium mt-3 mb-1" for="whatMainText">Main Section Text</label>
       <textarea id="whatMainText" rows="6" class="w-full border rounded px-3 py-2 resize-y" placeholder="Main content text"></textarea>
     </section>
@@ -59,19 +31,23 @@
     <!-- Get Involved Page -->
     <section>
       <h2 class="text-xl font-semibold mb-4 border-b pb-2">Get Involved Page</h2>
+
       <label class="block font-medium mb-1" for="involvedHeroTitle">Hero Section Title</label>
       <input type="text" id="involvedHeroTitle" class="w-full border rounded px-3 py-2" placeholder="Hero Title" />
+
       <label class="block font-medium mt-3 mb-1" for="involvedHeroSubtitle">Hero Section Subtitle</label>
       <input type="text" id="involvedHeroSubtitle" class="w-full border rounded px-3 py-2" placeholder="Hero Subtitle" />
+
       <label class="block font-medium mt-3 mb-1" for="involvedHeroBg">Hero Section Background Image URL</label>
       <input type="text" id="involvedHeroBg" class="w-full border rounded px-3 py-2" placeholder="https://example.com/image.jpg" />
+
       <label class="block font-medium mt-3 mb-1" for="involvedMainText">Main Section Text</label>
       <textarea id="involvedMainText" rows="6" class="w-full border rounded px-3 py-2 resize-y" placeholder="Main content text"></textarea>
     </section>
 
     <button
       onclick="saveContent()"
-      class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full"
+      class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-6"
     >
       Save
     </button>
@@ -80,69 +56,38 @@
   <script>
     function loadContent() {
       const data = JSON.parse(localStorage.getItem('siteContent')) || {
-        home: { videos: [{title:'',url:''},{title:'',url:''},{title:'',url:''}] },
-        whoWeAre: { videoUrl: '' },
         whatWeDo: { heroTitle: '', heroSubtitle: '', heroBg: '', mainText: '' },
         getInvolved: { heroTitle: '', heroSubtitle: '', heroBg: '', mainText: '' }
       };
 
-      // Home videos
-      document.getElementById('homeVideo1Title').value = data.home.videos[0].title;
-      document.getElementById('homeVideo1Url').value = data.home.videos[0].url;
-      document.getElementById('homeVideo2Title').value = data.home.videos[1].title;
-      document.getElementById('homeVideo2Url').value = data.home.videos[1].url;
-      document.getElementById('homeVideo3Title').value = data.home.videos[2].title;
-      document.getElementById('homeVideo3Url').value = data.home.videos[2].url;
-
-      // Who We Are video
-      document.getElementById('whoVideoUrl').value = data.whoWeAre.videoUrl;
-
       // What We Do page
-      document.getElementById('whatHeroTitle').value = data.whatWeDo.heroTitle;
-      document.getElementById('whatHeroSubtitle').value = data.whatWeDo.heroSubtitle;
-      document.getElementById('whatHeroBg').value = data.whatWeDo.heroBg;
-      document.getElementById('whatMainText').value = data.whatWeDo.mainText;
+      document.getElementById('whatHeroTitle').value = data.whatWeDo.heroTitle || '';
+      document.getElementById('whatHeroSubtitle').value = data.whatWeDo.heroSubtitle || '';
+      document.getElementById('whatHeroBg').value = data.whatWeDo.heroBg || '';
+      document.getElementById('whatMainText').value = data.whatWeDo.mainText || '';
 
       // Get Involved page
-      document.getElementById('involvedHeroTitle').value = data.getInvolved.heroTitle;
-      document.getElementById('involvedHeroSubtitle').value = data.getInvolved.heroSubtitle;
-      document.getElementById('involvedHeroBg').value = data.getInvolved.heroBg;
-      document.getElementById('involvedMainText').value = data.getInvolved.mainText;
+      document.getElementById('involvedHeroTitle').value = data.getInvolved.heroTitle || '';
+      document.getElementById('involvedHeroSubtitle').value = data.getInvolved.heroSubtitle || '';
+      document.getElementById('involvedHeroBg').value = data.getInvolved.heroBg || '';
+      document.getElementById('involvedMainText').value = data.getInvolved.mainText || '';
     }
 
     function saveContent() {
-      const data = {
-        home: {
-          videos: [
-            {
-              title: document.getElementById('homeVideo1Title').value,
-              url: document.getElementById('homeVideo1Url').value
-            },
-            {
-              title: document.getElementById('homeVideo2Title').value,
-              url: document.getElementById('homeVideo2Url').value
-            },
-            {
-              title: document.getElementById('homeVideo3Title').value,
-              url: document.getElementById('homeVideo3Url').value
-            }
-          ]
-        },
-        whoWeAre: {
-          videoUrl: document.getElementById('whoVideoUrl').value
-        },
-        whatWeDo: {
-          heroTitle: document.getElementById('whatHeroTitle').value,
-          heroSubtitle: document.getElementById('whatHeroSubtitle').value,
-          heroBg: document.getElementById('whatHeroBg').value,
-          mainText: document.getElementById('whatMainText').value
-        },
-        getInvolved: {
-          heroTitle: document.getElementById('involvedHeroTitle').value,
-          heroSubtitle: document.getElementById('involvedHeroSubtitle').value,
-          heroBg: document.getElementById('involvedHeroBg').value,
-          mainText: document.getElementById('involvedMainText').value
-        }
+      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
+
+      data.whatWeDo = {
+        heroTitle: document.getElementById('whatHeroTitle').value,
+        heroSubtitle: document.getElementById('whatHeroSubtitle').value,
+        heroBg: document.getElementById('whatHeroBg').value,
+        mainText: document.getElementById('whatMainText').value
+      };
+
+      data.getInvolved = {
+        heroTitle: document.getElementById('involvedHeroTitle').value,
+        heroSubtitle: document.getElementById('involvedHeroSubtitle').value,
+        heroBg: document.getElementById('involvedHeroBg').value,
+        mainText: document.getElementById('involvedMainText').value
       };
 
       localStorage.setItem('siteContent', JSON.stringify(data));
