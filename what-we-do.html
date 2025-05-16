@@ -40,15 +40,15 @@
   </header>
 
   <!-- Hero Section with Background Image -->
- <section
-  id="whatHeroSection"
-  class="relative flex flex-col items-center justify-center min-h-[120px] p-8 bg-gray-800 text-white text-center"
-  style="background-size: cover; background-position: center;"
->
+  <section
+    id="whatHeroSection"
+    class="relative flex flex-col items-center justify-center min-h-[300px] p-8 text-white text-center"
+    style="background-size: cover; background-position: center; background-color: #1f2937;"
+  >
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 class="text-4xl font-bold mb-4" data-translate="what-title">What We Do</h1>
-      <p class="text-lg" data-translate="what-subtitle">
+      <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title">What We Do</h1>
+      <p id="whatHeroSubtitle" class="text-lg" data-translate="what-subtitle">
         Discover how we drive real-world change through action, advocacy, and solidarity.
       </p>
     </div>
@@ -56,9 +56,8 @@
 
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center text-center flex-grow min-h-[300px]">
-    <p id="page2Text"></p>
+    <div id="whatMainText"></div>
   </main>
-  
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white p-6">
@@ -66,15 +65,9 @@
       <div>
         <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
         <ul class="space-y-1">
-          <li>
-            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
-          </li>
-          <li>
-            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
-          </li>
+          <li><a href="https://www.facebook.com/bilal.a.kareem/" target="_blank" class="hover:underline">Facebook</a></li>
+          <li><a href="https://x.com/BilalKareem" target="_blank" class="hover:underline">Twitter</a></li>
+          <li><a href="https://www.instagram.com/bilalakareem/" target="_blank" class="hover:underline">Instagram</a></li>
         </ul>
       </div>
     </div>
@@ -135,57 +128,25 @@
       applyLanguage();
     }
 
-    const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll("#main-nav a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("text-green-700", "font-semibold");
-      }
-    });
-
-    // Dynamically load page2 text from admin panel data (localStorage)
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", () => {
       applyLanguage();
-      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-      document.getElementById('page2Text').innerHTML = (data.page2 && data.page2.text) || `
-        <strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
-          <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
-          <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
-          <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
-        </ul>
-        Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.
-      `;
+      const data = JSON.parse(localStorage.getItem("siteContent")) || {};
+      const what = data.whatWeDo || {};
+
+      // Set hero background
+      const hero = document.getElementById("whatHeroSection");
+      if (hero && what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
+
+      // Set hero texts
+      const title = document.getElementById("whatHeroTitle");
+      const subtitle = document.getElementById("whatHeroSubtitle");
+      if (title && what.heroTitle) title.textContent = what.heroTitle;
+      if (subtitle && what.heroSubtitle) subtitle.textContent = what.heroSubtitle;
+
+      // Set main text
+      const text = document.getElementById("whatMainText");
+      if (text && what.mainText) text.innerHTML = what.mainText;
     });
   </script>
-  <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-    const whatData = data.whatWeDo || {};
-
-    // Update hero background image
-    const heroSection = document.getElementById('whatHeroSection');
-    if (heroSection && whatData.heroBg) {
-      heroSection.style.backgroundImage = `url('${whatData.heroBg}')`;
-    }
-
-    // Update hero title and subtitle
-    const heroTitle = document.getElementById('whatHeroTitle');
-    if (heroTitle && whatData.heroTitle) {
-      heroTitle.textContent = whatData.heroTitle;
-    }
-
-    const heroSubtitle = document.getElementById('whatHeroSubtitle');
-    if (heroSubtitle && whatData.heroSubtitle) {
-      heroSubtitle.textContent = whatData.heroSubtitle;
-    }
-
-    // Update main section text (can contain HTML)
-    const mainText = document.getElementById('whatMainText');
-    if (mainText && whatData.mainText) {
-      mainText.innerHTML = whatData.mainText;
-    }
-  });
-</script>
 </body>
 </html>
