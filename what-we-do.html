@@ -39,18 +39,25 @@
     </nav>
   </header>
 
-  <!-- Page Title -->
-  <section class="bg-gray-100 p-8 text-center">
-    <h1 class="text-3xl font-bold" data-translate="what-title">What We Do</h1>
-    <p class="mt-2 max-w-2xl mx-auto text-gray-700" data-translate="what-subtitle">
-      Discover how we drive real-world change through action, advocacy, and solidarity.
-    </p>
+  <!-- Hero Section with Background Image -->
+  <section
+    class="relative flex flex-col items-center justify-center min-h-[120px] p-8 bg-gray-800 text-white text-center"
+    style="background-image: url('path/to/your-image.jpg'); background-size: cover; background-position: center;"
+  >
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4" data-translate="what-title">What We Do</h1>
+      <p class="text-lg" data-translate="what-subtitle">
+        Discover how we drive real-world change through action, advocacy, and solidarity.
+      </p>
+    </div>
   </section>
 
   <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6 space-y-6 flex-grow">
+  <main class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center text-center flex-grow min-h-[300px]">
     <p id="page2Text"></p>
   </main>
+  
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white p-6">
