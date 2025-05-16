@@ -174,32 +174,32 @@
   </script>
 
   <!-- Dynamic Video Loader Script -->
-  <script>
-    // Function to convert any YouTube link to embed format
-    function youtubeToEmbed(url) {
-      const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-      const match = url.match(regExp);
-      return match && match[1]
-        ? `https://www.youtube.com/embed/${match[1]}`
-        : '';
-    }
+<script>
+  // Add this function at the top of the script
+  function youtubeToEmbed(url) {
+    const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return match && match[1]
+      ? `https://www.youtube.com/embed/${match[1]}`
+      : '';
+  }
 
-    // Load video data from localStorage (set by admin.html)
-    const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
-    const videos = (siteContent.home && siteContent.home.videos) || [];
+  // Load video data from localStorage (set by admin.html)
+  const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+  const videos = (siteContent.home && siteContent.home.videos) || [];
 
-    for (let i = 0; i < 3; i++) {
-      const titleElem = document.getElementById(`homeVideo${i+1}Title`);
-      const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
-      if (videos[i]) {
-        titleElem.textContent = videos[i].title || `Video ${i+1}`;
-        iframeElem.src = youtubeToEmbed(videos[i].url) || '';
-      } else {
-        titleElem.textContent = `Video ${i+1}`;
-        iframeElem.src = '';
-      }
+  for (let i = 0; i < 3; i++) {
+    const titleElem = document.getElementById(`homeVideo${i+1}Title`);
+    const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
+    if (videos[i]) {
+      titleElem.textContent = videos[i].title || `Video ${i+1}`;
+      iframeElem.src = youtubeToEmbed(videos[i].url) || '';
+    } else {
+      titleElem.textContent = `Video ${i+1}`;
+      iframeElem.src = '';
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
