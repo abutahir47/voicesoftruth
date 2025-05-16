@@ -61,23 +61,23 @@
         <!-- Video 1 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/AcFEffqsHzc" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe id="homeVideo1Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
-          <p class="mt-3 text-center text-sm font-medium" data-translate="video-1">What We Stand For</p>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo1Title"></p>
         </div>
         <!-- Video 2 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/4fqvnpjE8OU" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe id="homeVideo2Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
-          <p class="mt-3 text-center text-sm font-medium" data-translate="video-2">Raising Our Voice</p>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo2Title"></p>
         </div>
         <!-- Video 3 -->
         <div class="flex flex-col items-center">
           <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe src="https://www.youtube.com/embed/6hwR1P2rCrY" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+            <iframe id="homeVideo3Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
           </div>
-          <p class="mt-3 text-center text-sm font-medium" data-translate="video-3">Hope Through Action</p>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo3Title"></p>
         </div>
       </div>
     </section>
@@ -171,6 +171,25 @@
     });
 
     document.addEventListener("DOMContentLoaded", applyLanguage);
+  </script>
+
+  <!-- Dynamic Video Loader Script -->
+  <script>
+    // Load video data from localStorage (set by admin.html)
+    const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+    const videos = (siteContent.home && siteContent.home.videos) || [];
+
+    for (let i = 0; i < 3; i++) {
+      const titleElem = document.getElementById(`homeVideo${i+1}Title`);
+      const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
+      if (videos[i]) {
+        titleElem.textContent = videos[i].title || `Video ${i+1}`;
+        iframeElem.src = videos[i].url || '';
+      } else {
+        titleElem.textContent = `Video ${i+1}`;
+        iframeElem.src = '';
+      }
+    }
   </script>
 
 </body>
