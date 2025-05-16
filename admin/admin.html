@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <style>
+    label { display: block; margin-top: 10px; }
+    input, textarea { width: 100%; max-width: 500px; }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel</h1>
+
+  <h2>Home Page Videos</h2>
+  <div id="homeVideos">
+    <div>
+      <label>Video 1 Title: <input type="text" id="homeVideo1Title"></label>
+      <label>Video 1 URL (YouTube embed link): <input type="text" id="homeVideo1Url"></label>
+    </div>
+    <div>
+      <label>Video 2 Title: <input type="text" id="homeVideo2Title"></label>
+      <label>Video 2 URL (YouTube embed link): <input type="text" id="homeVideo2Url"></label>
+    </div>
+    <div>
+      <label>Video 3 Title: <input type="text" id="homeVideo3Title"></label>
+      <label>Video 3 URL (YouTube embed link): <input type="text" id="homeVideo3Url"></label>
+    </div>
+  </div>
+
+  <h2>Page 1 Video</h2>
+  <label>Video Title: <input type="text" id="page1VideoTitle"></label>
+  <label>Video URL (YouTube embed link): <input type="text" id="page1VideoUrl"></label>
+
+  <h2>Page 2 Text</h2>
+  <textarea id="page2Text" rows="5" placeholder="Enter text for Page 2"></textarea>
+
+  <h2>Page 3 Text</h2>
+  <textarea id="page3Text" rows="5" placeholder="Enter text for Page 3"></textarea>
+
+  <button onclick="saveContent()">Save</button>
+
+  <script>
+    // Load saved data from localStorage or default values
+    function loadContent() {
+      const data = JSON.parse(localStorage.getItem('siteContent')) || {
+        home: {
+          videos: [
+            {title: '', url: ''},
+            {title: '', url: ''},
+            {title: '', url: ''}
+          ]
+        },
+        page1: {video: {title: '', url: ''}},
+        page2: {text: ''},
+        page3: {text: ''}
+      };
+
+      document.getElementById('homeVideo1Title').value = data.home.videos[0].title;
+      document.getElementById('homeVideo1Url').value = data.home.videos[0].url;
+      document.getElementById('homeVideo2Title').value = data.home.videos[1].title;
+      document.getElementById('homeVideo2Url').value = data.home.videos[1].url;
+      document.getElementById('homeVideo3Title').value = data.home.videos[2].title;
+      document.getElementById('homeVideo3Url').value = data.home.videos[2].url;
+
+      document.getElementById('page1VideoTitle').value = data.page1.video.title;
+      document.getElementById('page1VideoUrl').value = data.page1.video.url;
+
+      document.getElementById('page2Text').value = data.page2.text;
+      document.getElementById('page3Text').value = data.page3.text;
+    }
+
+    function saveContent() {
+      const data = {
+        home: {
+          videos: [
+            {
+              title: document.getElementById('homeVideo1Title').value,
+              url: document.getElementById('homeVideo1Url').value
+            },
+            {
+              title: document.getElementById('homeVideo2Title').value,
+              url: document.getElementById('homeVideo2Url').value
+            },
+            {
+              title: document.getElementById('homeVideo3Title').value,
+              url: document.getElementById('homeVideo3Url').value
+            }
+          ]
+        },
+        page1: {
+          video: {
+            title: document.getElementById('page1VideoTitle').value,
+            url: document.getElementById('page1VideoUrl').value
+          }
+        },
+        page2: {
+          text: document.getElementById('page2Text').value
+        },
+        page3: {
+          text: document.getElementById('page3Text').value
+        }
+      };
+
+      localStorage.setItem('siteContent', JSON.stringify(data));
+      alert('Content saved!');
+    }
+
+    window.onload = loadContent;
+  </script>
+</body>
+</html>
