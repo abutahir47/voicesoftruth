@@ -138,10 +138,13 @@
         if (what.heroBg) {
           hero.style.backgroundImage = `url('${what.heroBg}')`;
         }
+
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
-        if (what.heroHeight) {
-          hero.style.minHeight = what.heroHeight;
-        }
+
+        // ✅ Apply hero height based on screen size
+        const isMobile = window.innerWidth < 768;
+        const fallbackHeight = "250px";
+        hero.style.minHeight = isMobile ? fallbackHeight : (what.heroHeight || fallbackHeight);
       }
 
       const title = document.getElementById("whatHeroTitle");
