@@ -140,14 +140,15 @@
         }
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
 
+        // Separate control for desktop vs mobile
         const isMobile = window.innerWidth < 768;
-        const fallbackHeight = "250px";
-        const mobileHeight = what.heroHeightMobile || fallbackHeight;
-        const desktopHeight = what.heroHeight || fallbackHeight;
+        const desktopHeight = what.heroHeight || '300px';
+        const mobileHeight = what.heroHeightMobile || desktopHeight;
 
-        const appliedHeight = isMobile ? mobileHeight : desktopHeight;
-        hero.style.height = appliedHeight;
-        hero.style.minHeight = appliedHeight;
+        const finalHeight = isMobile ? mobileHeight : desktopHeight;
+
+        hero.style.height = finalHeight;
+        hero.style.minHeight = finalHeight;
       }
 
       const title = document.getElementById("whatHeroTitle");
