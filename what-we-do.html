@@ -157,5 +157,34 @@
       `;
     });
   </script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const data = JSON.parse(localStorage.getItem('siteContent')) || {};
+    const whatData = data.whatWeDo || {};
+
+    // Update hero background image
+    const heroSection = document.getElementById('whatHeroSection');
+    if (heroSection && whatData.heroBg) {
+      heroSection.style.backgroundImage = `url('${whatData.heroBg}')`;
+    }
+
+    // Update hero title and subtitle
+    const heroTitle = document.getElementById('whatHeroTitle');
+    if (heroTitle && whatData.heroTitle) {
+      heroTitle.textContent = whatData.heroTitle;
+    }
+
+    const heroSubtitle = document.getElementById('whatHeroSubtitle');
+    if (heroSubtitle && whatData.heroSubtitle) {
+      heroSubtitle.textContent = whatData.heroSubtitle;
+    }
+
+    // Update main section text (can contain HTML)
+    const mainText = document.getElementById('whatMainText');
+    if (mainText && whatData.mainText) {
+      mainText.innerHTML = whatData.mainText;
+    }
+  });
+</script>
 </body>
 </html>
