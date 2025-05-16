@@ -133,17 +133,17 @@
       const data = JSON.parse(localStorage.getItem("siteContent")) || {};
       const what = data.whatWeDo || {};
 
-      // Set hero background
       const hero = document.getElementById("whatHeroSection");
-      if (hero && what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
+      if (hero && what.heroBg) {
+        hero.style.backgroundImage = `url('${what.heroBg}')`;
+        hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
+      }
 
-      // Set hero texts
       const title = document.getElementById("whatHeroTitle");
       const subtitle = document.getElementById("whatHeroSubtitle");
       if (title && what.heroTitle) title.textContent = what.heroTitle;
       if (subtitle && what.heroSubtitle) subtitle.textContent = what.heroSubtitle;
 
-      // Set main text
       const text = document.getElementById("whatMainText");
       if (text && what.mainText) text.innerHTML = what.mainText;
     });
