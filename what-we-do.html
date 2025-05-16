@@ -42,7 +42,7 @@
   <!-- Hero Section -->
   <section
     id="whatHeroSection"
-    class="relative flex flex-col items-center justify-center min-h-[200px] p-8 text-white text-center"
+    class="relative flex flex-col items-center justify-center p-8 text-white text-center"
     style="background-size: cover; background-position: center; background-color: #1f2937;"
   >
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -134,9 +134,14 @@
       const what = data.whatWeDo || {};
 
       const hero = document.getElementById("whatHeroSection");
-      if (hero && what.heroBg) {
-        hero.style.backgroundImage = `url('${what.heroBg}')`;
+      if (hero) {
+        if (what.heroBg) {
+          hero.style.backgroundImage = `url('${what.heroBg}')`;
+        }
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
+        if (what.heroHeight) {
+          hero.style.minHeight = what.heroHeight;
+        }
       }
 
       const title = document.getElementById("whatHeroTitle");
