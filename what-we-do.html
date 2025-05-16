@@ -49,41 +49,28 @@
 
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto p-6 space-y-6">
-    <p data-translate="what-intro">
-      <strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.
-    </p>
-    <ul class="list-disc pl-6 space-y-2" data-translate="what-list">
-      <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
-      <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
-      <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
-      <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
-    </ul>
-    <p data-translate="what-ending">
-      Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.
-    </p>
+    <p id="page2Text"></p>
   </main>
 
   <!-- Footer -->
-  <!-- Footer -->
-<footer class="bg-gray-800 text-white p-6">
-  <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
-    <div>
-      <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
-      <ul class="space-y-1">
-        <li>
-          <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
-        </li>
-        <li>
-          <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
-        </li>
-      </ul>
+  <footer class="bg-gray-800 text-white p-6">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+      <div>
+        <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
+        <ul class="space-y-1">
+          <li>
+            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</footer>
-
+  </footer>
 
   <!-- Scripts -->
   <script>
@@ -101,14 +88,6 @@
         "donate": "Donate Now",
         "what-title": "What We Do",
         "what-subtitle": "Discover how we drive real-world change through action, advocacy, and solidarity.",
-        "what-intro": "<strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.",
-        "what-list": `
-          <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
-          <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
-          <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
-          <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
-        `,
-        "what-ending": "Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.",
         "follow-us": "Follow us on:"
       },
       ar: {
@@ -119,14 +98,6 @@
         "donate": "تبرع الآن",
         "what-title": "ماذا نفعل",
         "what-subtitle": "اكتشف كيف نُحدث تغييراً حقيقياً من خلال العمل والمناصرة والتضامن.",
-        "what-intro": "<strong>أصوات الحقيقة</strong> تلتزم بالدفاع عن حقوق الإنسان، وكشف الظلم، ودعم المجتمعات في الأزمات. نحن نعمل عبر الحدود لإيصال صوت من لا صوت لهم وبناء عالم أفضل.",
-        "what-list": `
-          <li><strong>توثيق انتهاكات حقوق الإنسان:</strong> نبحث ونبلغ عن الانتهاكات لمحاسبة الجناة.</li>
-          <li><strong>إطلاق حملات عالمية:</strong> تسلط حملاتنا الضوء على القضايا العاجلة وتحث الناس على التحرك.</li>
-          <li><strong>تمكين المجتمع:</strong> نتعاون مع المجموعات المحلية لبناء أدوات من أجل عدالة وتغيير مستدامين.</li>
-          <li><strong>المناصرة السياسية:</strong> نضغط على الحكومات والمؤسسات لحماية الحريات والحقوق الأساسية.</li>
-        `,
-        "what-ending": "سواء في محاربة الرقابة، أو الدفاع عن سجناء الرأي، أو مواجهة الفساد، تظل رسالتنا واحدة: العدالة والكرامة والمساواة للجميع.",
         "follow-us": "تابعنا على:"
       }
     };
@@ -163,7 +134,21 @@
       }
     });
 
-    document.addEventListener("DOMContentLoaded", applyLanguage);
+    // Dynamically load page2 text from admin panel data (localStorage)
+    document.addEventListener("DOMContentLoaded", function() {
+      applyLanguage();
+      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
+      document.getElementById('page2Text').innerHTML = (data.page2 && data.page2.text) || `
+        <strong>Voices of Truth</strong> is committed to standing up for human rights, exposing injustice, and supporting communities in crisis. We work across borders to give a voice to the voiceless and create a better world.
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Documenting Human Rights Abuses:</strong> We research and report violations to hold oppressors accountable.</li>
+          <li><strong>Launching Global Campaigns:</strong> Our campaigns shine a spotlight on urgent issues and mobilize people to act.</li>
+          <li><strong>Community Empowerment:</strong> We partner with local groups to build tools for sustainable justice and change.</li>
+          <li><strong>Policy Advocacy:</strong> We pressure governments and institutions to protect fundamental freedoms and rights.</li>
+        </ul>
+        Whether it's fighting censorship, advocating for prisoners of conscience, or challenging corruption, our mission stays the same: justice, dignity, and equality for all.
+      `;
+    });
   </script>
 </body>
 </html>
