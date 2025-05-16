@@ -44,36 +44,36 @@
   <main class="p-6 flex-grow flex justify-center items-center">
     <div class="w-full max-w-3xl aspect-video overflow-hidden shadow-lg">
       <iframe
+        id="page1VideoIframe"
         class="w-full h-full"
-        src="https://www.youtube.com/embed/AcFEffqsHzc"
+        src=""
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
+    <p id="page1VideoTitle" class="mt-4 text-center font-semibold text-lg"></p>
   </main>
 
   <!-- Footer -->
-  <!-- Footer -->
-<footer class="bg-gray-800 text-white p-6">
-  <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
-    <div>
-      <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
-      <ul class="space-y-1">
-        <li>
-          <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
-        </li>
-        <li>
-          <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
-        </li>
-      </ul>
+  <footer class="bg-gray-800 text-white p-6">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+      <div>
+        <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
+        <ul class="space-y-1">
+          <li>
+            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</footer>
-
+  </footer>
 
   <!-- Scripts -->
   <script>
@@ -133,7 +133,19 @@
       }
     });
 
-    document.addEventListener("DOMContentLoaded", applyLanguage);
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLanguage();
+
+      // Load video data from localStorage (set by admin.html)
+      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+      const video = (siteContent.page1 && siteContent.page1.video) || {};
+
+      const iframe = document.getElementById('page1VideoIframe');
+      const titleElem = document.getElementById('page1VideoTitle');
+
+      iframe.src = video.url || 'https://www.youtube.com/embed/AcFEffqsHzc'; // default URL
+      titleElem.textContent = video.title || '';
+    });
   </script>
 
 </body>
