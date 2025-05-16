@@ -163,5 +163,34 @@
       `;
     });
   </script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const data = JSON.parse(localStorage.getItem('siteContent')) || {};
+    const involvedData = data.getInvolved || {};
+
+    // Update hero background image
+    const heroSection = document.getElementById('involvedHeroSection');
+    if (heroSection && involvedData.heroBg) {
+      heroSection.style.backgroundImage = `url('${involvedData.heroBg}')`;
+    }
+
+    // Update hero title and subtitle
+    const heroTitle = document.getElementById('involvedHeroTitle');
+    if (heroTitle && involvedData.heroTitle) {
+      heroTitle.textContent = involvedData.heroTitle;
+    }
+
+    const heroSubtitle = document.getElementById('involvedHeroSubtitle');
+    if (heroSubtitle && involvedData.heroSubtitle) {
+      heroSubtitle.textContent = involvedData.heroSubtitle;
+    }
+
+    // Update main section text (can contain HTML)
+    const mainText = document.getElementById('involvedMainText');
+    if (mainText && involvedData.mainText) {
+      mainText.innerHTML = involvedData.mainText;
+    }
+  });
+</script>
 </body>
 </html>
