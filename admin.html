@@ -56,9 +56,12 @@
       <label class="block font-medium mt-3 mb-1" for="whatHeroBg">Hero Section Background Image URL</label>
       <input type="text" id="whatHeroBg" class="w-full border rounded px-3 py-2" />
 
-      <!-- ✅ NEW FIELD: Y-position control -->
       <label class="block font-medium mt-3 mb-1" for="whatHeroPosition">Hero Background Vertical Position (Y-axis)</label>
       <input type="text" id="whatHeroPosition" class="w-full border rounded px-3 py-2" placeholder="e.g. top, center, 30%" />
+
+      <!-- ✅ NEW FIELD: Hero Height -->
+      <label class="block font-medium mt-3 mb-1" for="whatHeroHeight">Hero Section Height (e.g. 300px or 40vh)</label>
+      <input type="text" id="whatHeroHeight" class="w-full border rounded px-3 py-2" placeholder="e.g. 300px or 40vh" />
 
       <label class="block font-medium mt-3 mb-1" for="whatMainText">Main Section Text</label>
       <textarea id="whatMainText" rows="6" class="w-full border rounded px-3 py-2 resize-y"></textarea>
@@ -94,7 +97,14 @@
       const data = JSON.parse(localStorage.getItem('siteContent')) || {
         home: { videos: [{title:'',url:''},{title:'',url:''},{title:'',url:''}] },
         whoWeAre: { videoUrl: '' },
-        whatWeDo: { heroTitle: '', heroSubtitle: '', heroBg: '', heroPosition: '', mainText: '' },
+        whatWeDo: {
+          heroTitle: '',
+          heroSubtitle: '',
+          heroBg: '',
+          heroPosition: '',
+          heroHeight: '',
+          mainText: ''
+        },
         getInvolved: { heroTitle: '', heroSubtitle: '', heroBg: '', mainText: '' }
       };
 
@@ -114,6 +124,7 @@
       document.getElementById('whatHeroSubtitle').value = data.whatWeDo.heroSubtitle;
       document.getElementById('whatHeroBg').value = data.whatWeDo.heroBg;
       document.getElementById('whatHeroPosition').value = data.whatWeDo.heroPosition || '';
+      document.getElementById('whatHeroHeight').value = data.whatWeDo.heroHeight || '';
       document.getElementById('whatMainText').value = data.whatWeDo.mainText;
 
       // Get Involved
@@ -149,6 +160,7 @@
           heroSubtitle: document.getElementById('whatHeroSubtitle').value,
           heroBg: document.getElementById('whatHeroBg').value,
           heroPosition: document.getElementById('whatHeroPosition').value,
+          heroHeight: document.getElementById('whatHeroHeight').value,
           mainText: document.getElementById('whatMainText').value
         },
         getInvolved: {
