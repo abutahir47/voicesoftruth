@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
   <style>
     :root {
-      --involved-hero-desktop-height: 400px;
-      --involved-hero-mobile-height: 250px;
+      --involved-hero-desktop-height: 400px; /* fallback */
+      --involved-hero-mobile-height: 250px;  /* fallback */
     }
     #involvedHeroSection {
       min-height: var(--involved-hero-desktop-height);
@@ -78,15 +78,9 @@
       <div>
         <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
         <ul class="space-y-1">
-          <li>
-            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
-          </li>
-          <li>
-            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
-          </li>
+          <li><a href="https://www.facebook.com/bilal.a.kareem/" target="_blank" class="hover:underline">Facebook</a></li>
+          <li><a href="https://x.com/BilalKareem" target="_blank" class="hover:underline">Twitter</a></li>
+          <li><a href="https://www.instagram.com/bilalakareem/" target="_blank" class="hover:underline">Instagram</a></li>
         </ul>
       </div>
     </div>
@@ -117,7 +111,7 @@
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
         "involved-title": "شارك",
-        "involved-subtitle": "سواء كان لديك وقت، مهارات، أو طاقة-هناك مكان لك في حركتنا.",
+        "involved-subtitle": "سواء كان لديك وقت، مهارات، أو طاقة، هناك مكان لك في حركتنا.",
         "follow-us": "تابعنا على:"
       }
     };
@@ -145,53 +139,53 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
+      loadInvolvedContent();
     }
 
-    // Highlight current nav link
-    const currentPage = window.location.pathname.split("/").pop();
-    document.querySelectorAll("#main-nav a").forEach(link => {
-      if (link.getAttribute("href") === currentPage) {
-        link.classList.add("text-green-700", "font-semibold");
-      }
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLanguage();
+      loadInvolvedContent();
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-      applyLanguage();
+    function loadInvolvedContent() {
+      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+      const lang = currentLang || "en";
+      const involved = siteContent.getInvolved || {};
+      const involvedAr = siteContent.getInvolvedAr || {};
 
-      // Load from admin panel (localStorage)
-      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-      const involvedData = data.getInvolved || {};
+      // Use language-specific fields if present, fallback to English
+      const title = lang === "ar" ? involvedAr.heroTitle || involved.heroTitle : involved.heroTitle;
+      const subtitle = lang === "ar" ? involvedAr.heroSubtitle || involved.heroSubtitle : involved.heroSubtitle;
+      const mainText = lang === "ar" ? involvedAr.mainText || involved.mainText : involved.mainText;
 
       // Set hero background image and position
-      const heroSection = document.getElementById('involvedHeroSection');
-      if (heroSection) {
-        if (involvedData.heroBg) heroSection.style.backgroundImage = `url('${involvedData.heroBg}')`;
-        heroSection.style.backgroundPosition = `center ${involvedData.heroPosition || 'center'}`;
+      const hero = document.getElementById("involvedHeroSection");
+      if (hero) {
+        if (involved.heroBg) hero.style.backgroundImage = `url('${involved.heroBg}')`;
+        hero.style.backgroundPosition = `center ${involved.heroPosition || 'center'}`;
       }
 
       // Set hero heights via CSS variables
       document.documentElement.style.setProperty(
         '--involved-hero-desktop-height',
-        involvedData.heroHeight || '400px'
+        involved.heroHeight || '400px'
       );
       document.documentElement.style.setProperty(
         '--involved-hero-mobile-height',
-        involvedData.heroHeightMobile || '250px'
+        involved.heroHeightMobile || '250px'
       );
 
       // Set hero title and subtitle
-      const heroTitle = document.getElementById('involvedHeroTitle');
-      if (heroTitle) heroTitle.textContent = involvedData.heroTitle || '';
+      const titleElem = document.getElementById("involvedHeroTitle");
+      if (titleElem) titleElem.textContent = title || '';
 
-      const heroSubtitle = document.getElementById('involvedHeroSubtitle');
-      if (heroSubtitle) heroSubtitle.textContent = involvedData.heroSubtitle || '';
+      const subtitleElem = document.getElementById("involvedHeroSubtitle");
+      if (subtitleElem) subtitleElem.textContent = subtitle || '';
 
       // Set main text content
-      const mainText = document.getElementById('involvedMainText');
-      if (mainText && involvedData.mainText) {
-        mainText.innerHTML = involvedData.mainText;
-      }
-    });
+      const textElem = document.getElementById("involvedMainText");
+      if (textElem) textElem.innerHTML = mainText || '';
+    }
   </script>
 </body>
 </html>
