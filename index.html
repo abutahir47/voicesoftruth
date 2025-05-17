@@ -202,13 +202,13 @@
       const lang = currentLang || "en";
       const heroData = (siteContent.home && siteContent.home.hero) || {};
 
-      // Use language-specific fields if present, fallback to English
-      const title = lang === "ar" ? heroData.titleAr || heroData.title : heroData.title;
-      const subtitle = lang === "ar" ? heroData.subtitleAr || heroData.subtitle : heroData.subtitle;
+      // Use language-specific fields if present, do NOT fallback to hardcoded text
+      const title = lang === "ar" ? heroData.titleAr : heroData.title;
+      const subtitle = lang === "ar" ? heroData.subtitleAr : heroData.subtitle;
 
-      // Update hero section text
-      document.getElementById("homeHeroTitle").textContent = title || "Stand Up for Human Rights";
-      document.getElementById("homeHeroSubtitle").textContent = subtitle || "Join Voices of Truth in making a difference. We fight for justice, equality, and freedom where it's needed most.";
+      // Update hero section text (show nothing if blank)
+      document.getElementById("homeHeroTitle").textContent = (title !== undefined && title !== null) ? title : "";
+      document.getElementById("homeHeroSubtitle").textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : "";
 
       // Update background image, position, and heights
       const heroSection = document.getElementById("homeHeroSection");
