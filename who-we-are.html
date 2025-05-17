@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,8 +77,8 @@
 
   <!-- Scripts -->
   <script>
-    // Replace with your actual JSON file URL on GitHub Pages
-   const jsonUrl = "https://voicesoftruth.netlify.app/siteContent.json?v=" + Date.now();
+    // JSON file URL with cache busting
+    const jsonUrl = "https://voicesoftruth.netlify.app/siteContent.json?v=" + Date.now();
 
     const translations = {
       en: {
@@ -131,6 +131,22 @@
       menu.classList.toggle('hidden');
     }
 
+    // Convert YouTube watch URL to embed URL
+    function convertToEmbedUrl(youtubeUrl) {
+      try {
+        const url = new URL(youtubeUrl);
+        const videoId = url.searchParams.get('v');
+        if (videoId) {
+          return `https://www.youtube.com/embed/${videoId}`;
+        }
+        // If URL is already embed or different format, return as is
+        return youtubeUrl;
+      } catch (e) {
+        // Invalid URL, return empty string
+        return '';
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
       await fetchSiteContent();
@@ -155,7 +171,10 @@
       const iframe = document.getElementById('page1VideoIframe');
       const titleElem = document.getElementById('page1VideoTitle');
 
-      iframe.src = video.url || 'https://www.youtube.com/embed/AcFEffqsHzc'; // default URL
+      // Convert to embed URL if needed
+      const embedUrl = convertToEmbedUrl(video.url);
+
+      iframe.src = embedUrl || 'https://www.youtube.com/embed/AcFEffqsHzc'; // default fallback
       titleElem.textContent = video.title || '';
     }
   </script>
