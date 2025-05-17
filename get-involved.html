@@ -5,25 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Involved - Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
+  <style>
+    :root {
+      --involved-hero-desktop-height: 400px;
+      --involved-hero-mobile-height: 250px;
+    }
+    #involvedHeroSection {
+      min-height: var(--involved-hero-desktop-height);
+      background-size: cover;
+      background-position: center center;
+      background-color: #1f2937;
+    }
+    @media (max-width: 768px) {
+      #involvedHeroSection {
+        min-height: var(--involved-hero-mobile-height);
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-900 m-0 p-0 flex flex-col min-h-screen" dir="ltr">
 
   <!-- Header -->
   <header class="bg-white shadow-md w-full h-[64px] relative z-50">
     <div class="w-full flex justify-between items-stretch h-full">
-      <!-- Left: Logo -->
       <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
         <span data-translate="site-title">Voices<br>of Truth</span>
       </a>
-
-      <!-- Navigation -->
       <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
         <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
         <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
         <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
       </nav>
-
-      <!-- Burger + Language + Donate -->
       <div class="flex items-center space-x-2 rtl:space-x-reverse">
         <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
           <span class="w-6 h-0.5 bg-black"></span>
@@ -36,8 +48,6 @@
         <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
       </div>
     </div>
-
-    <!-- Mobile Navigation Menu -->
     <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
       <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
       <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
@@ -46,15 +56,12 @@
     </nav>
   </header>
 
-  <!-- Hero Section with Background Image -->
-  <section
-    class="relative flex flex-col items-center justify-center min-h-[120px] p-8 bg-gray-800 text-white text-center"
-    style="background-image: url('path/to/your-image.jpg'); background-size: cover; background-position: center;"
-  >
+  <!-- Hero Section -->
+  <section id="involvedHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 class="text-4xl font-bold mb-4" data-translate="involved-title">Get Involved</h1>
-      <p class="text-lg" data-translate="involved-subtitle">
+      <h1 id="involvedHeroTitle" class="text-4xl font-bold mb-4" data-translate="involved-title">Get Involved</h1>
+      <p id="involvedHeroSubtitle" class="text-lg" data-translate="involved-subtitle">
         Whether you have time, skills, or energy to share-there's a place for you in our movement.
       </p>
     </div>
@@ -62,7 +69,7 @@
 
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center text-center flex-grow min-h-[300px]">
-    <p id="page3Text"></p>
+    <div id="involvedMainText"></div>
   </main>
 
   <!-- Footer -->
@@ -140,6 +147,7 @@
       applyLanguage();
     }
 
+    // Highlight current nav link
     const currentPage = window.location.pathname.split("/").pop();
     document.querySelectorAll("#main-nav a").forEach(link => {
       if (link.getAttribute("href") === currentPage) {
@@ -147,50 +155,43 @@
       }
     });
 
-    // Dynamically load page3 text from admin panel data (localStorage)
     document.addEventListener("DOMContentLoaded", function() {
       applyLanguage();
+
+      // Load from admin panel (localStorage)
       const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-      document.getElementById('page3Text').innerHTML = (data.page3 && data.page3.text) || `
-        <strong>Getting involved</strong> with Voices of Truth means becoming part of a growing network of changemakers, advocates, and everyday people ready to make a difference.
-        <ul class="list-disc pl-6 space-y-2">
-          <li><strong>Volunteer:</strong> Join local or online teams to support campaigns, research, and outreach.</li>
-          <li><strong>Attend Events:</strong> Participate in rallies, workshops, and human rights festivals.</li>
-          <li><strong>Share the Message:</strong> Use your voice on social media to amplify the causes we fight for.</li>
-          <li><strong>Fundraise:</strong> Start a fundraiser or join a giving circle to support critical work.</li>
-        </ul>
-        No action is too small. Stand with us-and help give voice to truth, justice, and freedom.
-      `;
+      const involvedData = data.getInvolved || {};
+
+      // Set hero background image and position
+      const heroSection = document.getElementById('involvedHeroSection');
+      if (heroSection) {
+        if (involvedData.heroBg) heroSection.style.backgroundImage = `url('${involvedData.heroBg}')`;
+        heroSection.style.backgroundPosition = `center ${involvedData.heroPosition || 'center'}`;
+      }
+
+      // Set hero heights via CSS variables
+      document.documentElement.style.setProperty(
+        '--involved-hero-desktop-height',
+        involvedData.heroHeight || '400px'
+      );
+      document.documentElement.style.setProperty(
+        '--involved-hero-mobile-height',
+        involvedData.heroHeightMobile || '250px'
+      );
+
+      // Set hero title and subtitle
+      const heroTitle = document.getElementById('involvedHeroTitle');
+      if (heroTitle) heroTitle.textContent = involvedData.heroTitle || '';
+
+      const heroSubtitle = document.getElementById('involvedHeroSubtitle');
+      if (heroSubtitle) heroSubtitle.textContent = involvedData.heroSubtitle || '';
+
+      // Set main text content
+      const mainText = document.getElementById('involvedMainText');
+      if (mainText && involvedData.mainText) {
+        mainText.innerHTML = involvedData.mainText;
+      }
     });
   </script>
-  <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-    const involvedData = data.getInvolved || {};
-
-    // Update hero background image
-    const heroSection = document.getElementById('involvedHeroSection');
-    if (heroSection && involvedData.heroBg) {
-      heroSection.style.backgroundImage = `url('${involvedData.heroBg}')`;
-    }
-
-    // Update hero title and subtitle
-    const heroTitle = document.getElementById('involvedHeroTitle');
-    if (heroTitle && involvedData.heroTitle) {
-      heroTitle.textContent = involvedData.heroTitle;
-    }
-
-    const heroSubtitle = document.getElementById('involvedHeroSubtitle');
-    if (heroSubtitle && involvedData.heroSubtitle) {
-      heroSubtitle.textContent = involvedData.heroSubtitle;
-    }
-
-    // Update main section text (can contain HTML)
-    const mainText = document.getElementById('involvedMainText');
-    if (mainText && involvedData.mainText) {
-      mainText.innerHTML = involvedData.mainText;
-    }
-  });
-</script>
 </body>
 </html>
