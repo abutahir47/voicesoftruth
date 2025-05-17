@@ -178,6 +178,16 @@
     <button onclick="saveContent()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-6">
       Save
     </button>
+    <button onclick="exportContentAsJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
+      Export JSON
+    </button>
+    <!--
+      Instructions:
+      1. Edit your content and click "Save" to update your browser's localStorage.
+      2. Click "Export JSON" to download the latest siteContent.json.
+      3. Upload or replace this file in your GitHub repo.
+      4. Commit and push to update your public website content.
+    -->
   </div>
 
   <script>
@@ -318,6 +328,21 @@
 
       localStorage.setItem('siteContent', JSON.stringify(data));
       alert('Content saved!');
+    }
+
+    // Export JSON button functionality
+    function exportContentAsJSON() {
+      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
+      const jsonStr = JSON.stringify(data, null, 2);
+      const blob = new Blob([jsonStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'siteContent.json';
+      a.click();
+
+      URL.revokeObjectURL(url);
     }
 
     window.onload = loadContent;
