@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What We Do - Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
+  <style>
+    :root {
+      --hero-desktop-height: 400px; /* fallback */
+      --hero-mobile-height: 250px;  /* fallback */
+    }
+    #whatHeroSection {
+      min-height: var(--hero-desktop-height);
+      background-size: cover;
+      background-position: center center;
+      background-color: #1f2937;
+    }
+    @media (max-width: 768px) {
+      #whatHeroSection {
+        min-height: var(--hero-mobile-height);
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-900 m-0 p-0 flex flex-col min-h-screen" dir="ltr">
 
@@ -40,11 +57,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section
-    id="whatHeroSection"
-    class="relative flex flex-col items-center justify-center p-8 text-white text-center"
-    style="background-size: cover; background-position: center; background-color: #1f2937;"
-  >
+  <section id="whatHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
       <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title">What We Do</h1>
@@ -130,27 +143,35 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       applyLanguage();
+
       const data = JSON.parse(localStorage.getItem("siteContent")) || {};
       const what = data.whatWeDo || {};
 
+      // Set hero background image and position
       const hero = document.getElementById("whatHeroSection");
       if (hero) {
         if (what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
         hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
-
-        const screenWidth = window.innerWidth;
-        const mobileHeight = what.heroHeightMobile || what.heroHeight || '250px';
-        const desktopHeight = what.heroHeight || '400px';
-
-        hero.style.height = screenWidth < 768 ? mobileHeight : desktopHeight;
-        hero.style.minHeight = screenWidth < 768 ? mobileHeight : desktopHeight;
       }
 
+      // Set hero heights via CSS variables
+      document.documentElement.style.setProperty(
+        '--hero-desktop-height',
+        what.heroHeight || '400px'
+      );
+      document.documentElement.style.setProperty(
+        '--hero-mobile-height',
+        what.heroHeightMobile || '250px'
+      );
+
+      // Set hero title and subtitle
       const title = document.getElementById("whatHeroTitle");
-      const subtitle = document.getElementById("whatHeroSubtitle");
       if (title) title.textContent = what.heroTitle || '';
+
+      const subtitle = document.getElementById("whatHeroSubtitle");
       if (subtitle) subtitle.textContent = what.heroSubtitle || '';
 
+      // Set main text content
       const text = document.getElementById("whatMainText");
       if (text && what.mainText) text.innerHTML = what.mainText;
     });
