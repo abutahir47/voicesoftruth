@@ -64,10 +64,8 @@
   <section id="homeHeroSection" class="w-full flex flex-col justify-center items-center text-center text-white relative">
     <div class="absolute inset-0 bg-black/60"></div>
     <div class="relative z-10 w-full flex flex-col justify-center items-center px-4">
-      <h2 id="homeHeroTitle" class="text-3xl font-bold mb-4" data-translate="hero-title">Stand Up for Human Rights</h2>
-      <p id="homeHeroSubtitle" class="mb-6 max-w-xl" data-translate="hero-text">
-        Join Voices of Truth in making a difference. We fight for justice, equality, and freedom where it's needed most.
-      </p>
+      <h2 id="homeHeroTitle" class="text-3xl font-bold mb-4" data-translate="hero-title"></h2>
+      <p id="homeHeroSubtitle" class="mb-6 max-w-xl" data-translate="hero-text"></p>
     </div>
   </section>
 
@@ -123,6 +121,9 @@
 
   <!-- Scripts -->
   <script>
+    // Set this to your actual JSON file URL on GitHub Pages!
+    const jsonUrl = "https://YOUR-USERNAME.github.io/YOUR-REPO/siteContent.json";
+
     // Language toggle and translation logic
     const translations = {
       en: {
@@ -131,8 +132,8 @@
         "nav-what": "What We Do",
         "nav-involved": "Get Involved",
         "donate": "Donate Now",
-        "hero-title": "Stand Up for Human Rights",
-        "hero-text": "Join Voices of Truth in making a difference. We fight for justice, equality, and freedom where it's needed most.",
+        "hero-title": "",
+        "hero-text": "",
         "video-title": "Featured Videos",
         "video-1": "What We Stand For",
         "video-2": "Who Are HTS",
@@ -145,8 +146,8 @@
         "nav-what": "ماذا نفعل",
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
-        "hero-title": "قف من أجل حقوق الإنسان",
-        "hero-text": "انضم إلى أصوات الحقيقة لإحداث فرق. نحن نحارب من أجل العدالة والمساواة والحرية في الأماكن التي تمس الحاجة إليها.",
+        "hero-title": "",
+        "hero-text": "",
         "video-title": "فيديوهات مميزة",
         "video-1": "ما نمثله",
         "video-2": "من هم هيئة تحرير الشام",
@@ -156,13 +157,14 @@
     };
 
     let currentLang = localStorage.getItem("language") || "en";
+    let siteContent = {};
+
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
       const langToggle = document.getElementById("lang-toggle");
       const langMobile = document.getElementById("lang-toggle-mobile");
       if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
       if (langMobile) langMobile.textContent = currentLang === "ar" ? "English" : "العربية";
-
       document.querySelectorAll("[data-translate]").forEach(el => {
         const key = el.getAttribute("data-translate");
         if (translations[currentLang][key]) {
@@ -175,7 +177,8 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
-      loadHomeHeroContent(); // Reload hero content on language change
+      updateHomeHeroContent();
+      updateHomeVideos();
     }
 
     function toggleMenu() {
@@ -191,26 +194,34 @@
       }
     });
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
-      loadHomeHeroContent();
+      await fetchSiteContent();
+      updateHomeHeroContent();
+      updateHomeVideos();
     });
 
-    // ---- Dynamic Home Hero Section Loader ----
-    function loadHomeHeroContent() {
-      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+    async function fetchSiteContent() {
+      try {
+        const response = await fetch(jsonUrl, {cache: "no-store"});
+        if (!response.ok) throw new Error("Could not load site content JSON.");
+        siteContent = await response.json();
+      } catch (err) {
+        siteContent = {}; // fallback to empty
+        console.error("Error loading site content:", err);
+      }
+    }
+
+    function updateHomeHeroContent() {
       const lang = currentLang || "en";
       const heroData = (siteContent.home && siteContent.home.hero) || {};
 
-      // Use language-specific fields if present, do NOT fallback to hardcoded text
       const title = lang === "ar" ? heroData.titleAr : heroData.title;
       const subtitle = lang === "ar" ? heroData.subtitleAr : heroData.subtitle;
 
-      // Update hero section text (show nothing if blank)
       document.getElementById("homeHeroTitle").textContent = (title !== undefined && title !== null) ? title : "";
       document.getElementById("homeHeroSubtitle").textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : "";
 
-      // Update background image, position, and heights
       const heroSection = document.getElementById("homeHeroSection");
       if (heroSection) {
         if (heroData.bg) heroSection.style.backgroundImage = `url('${heroData.bg}')`;
@@ -219,10 +230,7 @@
         document.documentElement.style.setProperty('--home-hero-mobile-height', heroData.heightMobile || '250px');
       }
     }
-  </script>
 
-  <!-- Dynamic Video Loader Script -->
-  <script>
     function youtubeToEmbed(url) {
       const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
       const match = url.match(regExp);
@@ -231,19 +239,18 @@
         : '';
     }
 
-    // Load video data from localStorage (set by admin.html)
-    const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
-    const videos = (siteContent.home && siteContent.home.videos) || [];
-
-    for (let i = 0; i < 3; i++) {
-      const titleElem = document.getElementById(`homeVideo${i+1}Title`);
-      const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
-      if (videos[i]) {
-        titleElem.textContent = videos[i].title || `Video ${i+1}`;
-        iframeElem.src = youtubeToEmbed(videos[i].url) || '';
-      } else {
-        titleElem.textContent = `Video ${i+1}`;
-        iframeElem.src = '';
+    function updateHomeVideos() {
+      const videos = (siteContent.home && siteContent.home.videos) || [];
+      for (let i = 0; i < 3; i++) {
+        const titleElem = document.getElementById(`homeVideo${i+1}Title`);
+        const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
+        if (videos[i]) {
+          titleElem.textContent = videos[i].title || `Video ${i+1}`;
+          iframeElem.src = youtubeToEmbed(videos[i].url) || '';
+        } else {
+          titleElem.textContent = `Video ${i+1}`;
+          iframeElem.src = '';
+        }
       }
     }
   </script>
