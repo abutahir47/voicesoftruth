@@ -1,0 +1,46 @@
+{
+  "home": {
+    "hero": {
+      "title": "",
+      "titleAr": "",
+      "subtitle": "",
+      "subtitleAr": "",
+      "bg": "",
+      "position": "",
+      "height": "",
+      "heightMobile": ""
+    },
+    "videos": [
+      {"title": "", "url": ""},
+      {"title": "", "url": ""},
+      {"title": "", "url": ""}
+    ]
+  },
+  "whoWeAre": {
+    "video": {"title": "", "url": ""}
+  },
+  "whatWeDo": {
+    "heroTitle": "",
+    "heroTitleAr": "",
+    "heroSubtitle": "",
+    "heroSubtitleAr": "",
+    "heroBg": "",
+    "heroPosition": "",
+    "heroHeight": "",
+    "heroHeightMobile": "",
+    "mainText": "",
+    "mainTextAr": ""
+  },
+  "getInvolved": {
+    "heroTitle": "",
+    "heroTitleAr": "",
+    "heroSubtitle": "",
+    "heroSubtitleAr": "",
+    "heroBg": "",
+    "heroPosition": "",
+    "heroHeight": "",
+    "heroHeightMobile": "",
+    "mainText": "",
+    "mainTextAr": ""
+  }
+}
