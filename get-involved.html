@@ -60,10 +60,8 @@
   <section id="involvedHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 id="involvedHeroTitle" class="text-4xl font-bold mb-4" data-translate="involved-title">Get Involved</h1>
-      <p id="involvedHeroSubtitle" class="text-lg" data-translate="involved-subtitle">
-        Whether you have time, skills, or energy to share-there's a place for you in our movement.
-      </p>
+      <h1 id="involvedHeroTitle" class="text-4xl font-bold mb-4" data-translate="involved-title"></h1>
+      <p id="involvedHeroSubtitle" class="text-lg" data-translate="involved-subtitle"></p>
     </div>
   </section>
 
@@ -88,10 +86,8 @@
 
   <!-- Scripts -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
+    // Set this to your actual JSON file URL on GitHub Pages!
+    const jsonUrl = "https://YOUR-USERNAME.github.io/YOUR-REPO/siteContent.json";
 
     const translations = {
       en: {
@@ -100,8 +96,8 @@
         "nav-what": "What We Do",
         "nav-involved": "Get Involved",
         "donate": "Donate Now",
-        "involved-title": "Get Involved",
-        "involved-subtitle": "Whether you have time, skills, or energy to share-there's a place for you in our movement.",
+        "involved-title": "",
+        "involved-subtitle": "",
         "follow-us": "Follow us on:"
       },
       ar: {
@@ -110,13 +106,14 @@
         "nav-what": "ماذا نفعل",
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
-        "involved-title": "شارك",
-        "involved-subtitle": "سواء كان لديك وقت، مهارات، أو طاقة، هناك مكان لك في حركتنا.",
+        "involved-title": "",
+        "involved-subtitle": "",
         "follow-us": "تابعنا على:"
       }
     };
 
     let currentLang = localStorage.getItem("language") || "en";
+    let siteContent = {};
 
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
@@ -139,24 +136,39 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
-      loadInvolvedContent();
+      updateInvolvedContent();
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
-      loadInvolvedContent();
+      await fetchSiteContent();
+      updateInvolvedContent();
     });
 
-    function loadInvolvedContent() {
-      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+    async function fetchSiteContent() {
+      try {
+        const response = await fetch(jsonUrl, {cache: "no-store"});
+        if (!response.ok) throw new Error("Could not load site content JSON.");
+        siteContent = await response.json();
+      } catch (err) {
+        siteContent = {};
+        console.error("Error loading site content:", err);
+      }
+    }
+
+    function updateInvolvedContent() {
       const lang = currentLang || "en";
       const involved = siteContent.getInvolved || {};
-      const involvedAr = siteContent.getInvolvedAr || {};
 
-      // Use language-specific fields if present, fallback to English
-      const title = lang === "ar" ? involvedAr.heroTitle || involved.heroTitle : involved.heroTitle;
-      const subtitle = lang === "ar" ? involvedAr.heroSubtitle || involved.heroSubtitle : involved.heroSubtitle;
-      const mainText = lang === "ar" ? involvedAr.mainText || involved.mainText : involved.mainText;
+      // Use language-specific fields; show nothing if blank
+      const title = lang === "ar" ? involved.heroTitleAr : involved.heroTitle;
+      const subtitle = lang === "ar" ? involved.heroSubtitleAr : involved.heroSubtitle;
+      const mainText = lang === "ar" ? involved.mainTextAr : involved.mainText;
 
       // Set hero background image and position
       const hero = document.getElementById("involvedHeroSection");
@@ -175,16 +187,16 @@
         involved.heroHeightMobile || '250px'
       );
 
-      // Set hero title and subtitle
+      // Set hero title and subtitle (no fallback text)
       const titleElem = document.getElementById("involvedHeroTitle");
-      if (titleElem) titleElem.textContent = title || '';
+      if (titleElem) titleElem.textContent = (title !== undefined && title !== null) ? title : '';
 
       const subtitleElem = document.getElementById("involvedHeroSubtitle");
-      if (subtitleElem) subtitleElem.textContent = subtitle || '';
+      if (subtitleElem) subtitleElem.textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : '';
 
       // Set main text content
       const textElem = document.getElementById("involvedMainText");
-      if (textElem) textElem.innerHTML = mainText || '';
+      if (textElem) textElem.innerHTML = (mainText !== undefined && mainText !== null) ? mainText : '';
     }
   </script>
 </body>
