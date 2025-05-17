@@ -5,29 +5,38 @@
       "titleAr": "",
       "subtitle": "",
       "subtitleAr": "",
-      "bg": "",
-      "position": "",
-      "height": "",
-      "heightMobile": ""
+      "bg": "img/American-journalist-Bilal-Abdul-Kareem.jpg.webp",
+      "position": "40%",
+      "height": "500px",
+      "heightMobile": "250px"
     },
     "videos": [
-      {"title": "", "url": ""},
-      {"title": "", "url": ""},
-      {"title": "", "url": ""}
+      {
+        "title": "THE LIBERATION OF ALEPPO | BILAL ABDUL KAREEM  ",
+        "url": "https://www.youtube.com/watch?v=GsMmOuX0BzA"
+      },
+      {
+        "title": "Syria Update with Bilal Abdul Kareem with Dr Shadee Elmasry",
+        "url": "https://www.youtube.com/watch?v=6hwR1P2rCrY"
+      },
+      {
+        "title": "Understanding HTS and the New Syria with Bilal Abdul Kareem  ",
+        "url": "https://www.youtube.com/watch?v=4fqvnpjE8OU&t=161s"
+      }
     ]
   },
   "whoWeAre": {
-    "video": {"title": "", "url": ""}
+    "videoUrl": "https://www.youtube.com/watch?v=dfJicvlCwao"
   },
   "whatWeDo": {
     "heroTitle": "",
     "heroTitleAr": "",
     "heroSubtitle": "",
     "heroSubtitleAr": "",
-    "heroBg": "",
-    "heroPosition": "",
-    "heroHeight": "",
-    "heroHeightMobile": "",
+    "heroBg": "img/bilal.png.webp",
+    "heroPosition": "10%",
+    "heroHeight": "600px",
+    "heroHeightMobile": "250px",
     "mainText": "",
     "mainTextAr": ""
   },
@@ -36,10 +45,10 @@
     "heroTitleAr": "",
     "heroSubtitle": "",
     "heroSubtitleAr": "",
-    "heroBg": "",
-    "heroPosition": "",
-    "heroHeight": "",
-    "heroHeightMobile": "",
+    "heroBg": "img/BilalAbdulKareemFB.jpg.webp",
+    "heroPosition": "20%",
+    "heroHeight": "600px",
+    "heroHeightMobile": "250px",
     "mainText": "",
     "mainTextAr": ""
   }
