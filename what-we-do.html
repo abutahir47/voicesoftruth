@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,8 +7,8 @@
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
   <style>
     :root {
-      --hero-desktop-height: 400px; /* fallback */
-      --hero-mobile-height: 250px;  /* fallback */
+      --hero-desktop-height: 400px;
+      --hero-mobile-height: 250px;
     }
     #whatHeroSection {
       min-height: var(--hero-desktop-height);
@@ -60,10 +60,8 @@
   <section id="whatHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title">What We Do</h1>
-      <p id="whatHeroSubtitle" class="text-lg" data-translate="what-subtitle">
-        Discover how we drive real-world change through action, advocacy, and solidarity.
-      </p>
+      <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title"></h1>
+      <p id="whatHeroSubtitle" class="text-lg" data-translate="what-subtitle"></p>
     </div>
   </section>
 
@@ -88,10 +86,8 @@
 
   <!-- Scripts -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
+    // Set this to your actual JSON file URL on GitHub Pages!
+    const jsonUrl = "https://YOUR-USERNAME.github.io/YOUR-REPO/siteContent.json";
 
     const translations = {
       en: {
@@ -100,8 +96,8 @@
         "nav-what": "What We Do",
         "nav-involved": "Get Involved",
         "donate": "Donate Now",
-        "what-title": "What We Do",
-        "what-subtitle": "Discover how we drive real-world change through action, advocacy, and solidarity.",
+        "what-title": "",
+        "what-subtitle": "",
         "follow-us": "Follow us on:"
       },
       ar: {
@@ -110,13 +106,14 @@
         "nav-what": "ماذا نفعل",
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
-        "what-title": "ماذا نفعل",
-        "what-subtitle": "اكتشف كيف نُحدث تغييراً حقيقياً من خلال العمل والمناصرة والتضامن.",
+        "what-title": "",
+        "what-subtitle": "",
         "follow-us": "تابعنا على:"
       }
     };
 
     let currentLang = localStorage.getItem("language") || "en";
+    let siteContent = {};
 
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
@@ -139,24 +136,39 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
-      loadWhatWeDoContent();
+      updateWhatWeDoContent();
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
-      loadWhatWeDoContent();
+      await fetchSiteContent();
+      updateWhatWeDoContent();
     });
 
-    function loadWhatWeDoContent() {
-      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+    async function fetchSiteContent() {
+      try {
+        const response = await fetch(jsonUrl, {cache: "no-store"});
+        if (!response.ok) throw new Error("Could not load site content JSON.");
+        siteContent = await response.json();
+      } catch (err) {
+        siteContent = {};
+        console.error("Error loading site content:", err);
+      }
+    }
+
+    function updateWhatWeDoContent() {
       const lang = currentLang || "en";
       const what = siteContent.whatWeDo || {};
-      const whatAr = siteContent.whatWeDoAr || {};
 
-      // Use language-specific fields if present, fallback to English
-      const title = lang === "ar" ? whatAr.heroTitle || what.heroTitle : what.heroTitle;
-      const subtitle = lang === "ar" ? whatAr.heroSubtitle || what.heroSubtitle : what.heroSubtitle;
-      const mainText = lang === "ar" ? whatAr.mainText || what.mainText : what.mainText;
+      // Use language-specific fields; show nothing if blank
+      const title = lang === "ar" ? what.heroTitleAr : what.heroTitle;
+      const subtitle = lang === "ar" ? what.heroSubtitleAr : what.heroSubtitle;
+      const mainText = lang === "ar" ? what.mainTextAr : what.mainText;
 
       // Set hero background image and position
       const hero = document.getElementById("whatHeroSection");
@@ -175,16 +187,16 @@
         what.heroHeightMobile || '250px'
       );
 
-      // Set hero title and subtitle
+      // Set hero title and subtitle (no fallback text)
       const titleElem = document.getElementById("whatHeroTitle");
-      if (titleElem) titleElem.textContent = title || '';
+      if (titleElem) titleElem.textContent = (title !== undefined && title !== null) ? title : '';
 
       const subtitleElem = document.getElementById("whatHeroSubtitle");
-      if (subtitleElem) subtitleElem.textContent = subtitle || '';
+      if (subtitleElem) subtitleElem.textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : '';
 
       // Set main text content
       const textElem = document.getElementById("whatMainText");
-      if (textElem) textElem.innerHTML = mainText || '';
+      if (textElem) textElem.innerHTML = (mainText !== undefined && mainText !== null) ? mainText : '';
     }
   </script>
 </body>
