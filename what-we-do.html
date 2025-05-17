@@ -139,13 +139,24 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
+      loadWhatWeDoContent();
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       applyLanguage();
+      loadWhatWeDoContent();
+    });
 
-      const data = JSON.parse(localStorage.getItem("siteContent")) || {};
-      const what = data.whatWeDo || {};
+    function loadWhatWeDoContent() {
+      const siteContent = JSON.parse(localStorage.getItem('siteContent')) || {};
+      const lang = currentLang || "en";
+      const what = siteContent.whatWeDo || {};
+      const whatAr = siteContent.whatWeDoAr || {};
+
+      // Use language-specific fields if present, fallback to English
+      const title = lang === "ar" ? whatAr.heroTitle || what.heroTitle : what.heroTitle;
+      const subtitle = lang === "ar" ? whatAr.heroSubtitle || what.heroSubtitle : what.heroSubtitle;
+      const mainText = lang === "ar" ? whatAr.mainText || what.mainText : what.mainText;
 
       // Set hero background image and position
       const hero = document.getElementById("whatHeroSection");
@@ -165,16 +176,16 @@
       );
 
       // Set hero title and subtitle
-      const title = document.getElementById("whatHeroTitle");
-      if (title) title.textContent = what.heroTitle || '';
+      const titleElem = document.getElementById("whatHeroTitle");
+      if (titleElem) titleElem.textContent = title || '';
 
-      const subtitle = document.getElementById("whatHeroSubtitle");
-      if (subtitle) subtitle.textContent = what.heroSubtitle || '';
+      const subtitleElem = document.getElementById("whatHeroSubtitle");
+      if (subtitleElem) subtitleElem.textContent = subtitle || '';
 
       // Set main text content
-      const text = document.getElementById("whatMainText");
-      if (text && what.mainText) text.innerHTML = what.mainText;
-    });
+      const textElem = document.getElementById("whatMainText");
+      if (textElem) textElem.innerHTML = mainText || '';
+    }
   </script>
 </body>
 </html>
