@@ -28,81 +28,16 @@
 <body class="bg-white text-gray-900 m-0 p-0" dir="ltr">
 
   <!-- Header -->
-  <header class="bg-white shadow-md w-full h-[64px] relative z-50">
-    <div class="w-full flex justify-between items-stretch h-full">
-      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
-        <span data-translate="site-title">Voices<br>of Truth</span>
-      </a>
-      <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
-        <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
-        <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
-        <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
-      </nav>
-      <div class="flex items-center space-x-2 rtl:space-x-reverse">
-        <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
-          <span class="w-6 h-0.5 bg-black"></span>
-          <span class="w-6 h-0.5 bg-black"></span>
-          <span class="w-6 h-0.5 bg-black"></span>
-        </button>
-        <div class="hidden md:block">
-          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">
-            العربية
-          </button>
-        </div>
-        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">
-          Donate Now
-        </a>
-      </div>
-    </div>
-    <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
-      <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
-      <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
-      <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
-      <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
-    </nav>
-  </header>
+  <!-- ... (your header code unchanged) ... -->
 
   <!-- Hero Section -->
-  <section id="homeHeroSection" class="w-full flex flex-col justify-center items-center text-center text-white relative">
-    <div class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10 w-full flex flex-col justify-center items-center px-4">
-      <h2 id="homeHeroTitle" class="text-3xl font-bold mb-4" data-translate="hero-title"></h2>
-      <p id="homeHeroSubtitle" class="mb-6 max-w-xl" data-translate="hero-text"></p>
-    </div>
-  </section>
+  <!-- ... (your hero section code unchanged) ... -->
 
   <!-- Main Content -->
-  <main class="p-6 max-w-6xl mx-auto space-y-10">
-    <section>
-      <h3 class="text-2xl font-bold mb-6 text-center" data-translate="video-title">Featured Videos</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="videoContainer">
-        <!-- Video 1 -->
-        <div class="flex flex-col items-center">
-          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe id="homeVideo1Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
-          </div>
-          <p class="mt-3 text-center text-sm font-medium" id="homeVideo1Title"></p>
-        </div>
-        <!-- Video 2 -->
-        <div class="flex flex-col items-center">
-          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe id="homeVideo2Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
-          </div>
-          <p class="mt-3 text-center text-sm font-medium" id="homeVideo2Title"></p>
-        </div>
-        <!-- Video 3 -->
-        <div class="flex flex-col items-center">
-          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
-            <iframe id="homeVideo3Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
-          </div>
-          <p class="mt-3 text-center text-sm font-medium" id="homeVideo3Title"></p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- ... (your main content code unchanged) ... -->
 
-  <!-- Footer: Only social icons, no "Follow us on" text -->
-  <footer class="bg-gray-900 text-gray-300 py-8 px-6 md:px-20 mt-10">
+  <!-- Footer: Always LTR, only icons, no "Follow us on" text -->
+  <footer dir="ltr" class="bg-gray-900 text-gray-300 py-8 px-6 md:px-20 mt-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <p class="mb-4 md:mb-0 text-left w-full md:w-auto">&copy; 2025 Voices of Truth. All rights reserved.</p>
       <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
@@ -114,7 +49,7 @@
           <!-- X (custom inline SVG) -->
           <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
             <svg
-              class="w-8 h-8 text-white"
+              class="w-10 h-10 text-white"
               viewBox="0 0 1200 1227"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
