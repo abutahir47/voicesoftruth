@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
-  <!-- Font Awesome CDN for social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     :root {
       --home-hero-desktop-height: 400px;
@@ -28,52 +26,95 @@
 <body class="bg-white text-gray-900 m-0 p-0" dir="ltr">
 
   <!-- Header -->
-  <!-- ... your header code ... -->
+  <header class="bg-white shadow-md w-full h-[64px] relative z-50">
+    <div class="w-full flex justify-between items-stretch h-full">
+      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
+        <span data-translate="site-title">Voices<br>of Truth</span>
+      </a>
+      <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
+        <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
+        <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
+        <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
+      </nav>
+      <div class="flex items-center space-x-2 rtl:space-x-reverse">
+        <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+          <span class="w-6 h-0.5 bg-black"></span>
+        </button>
+        <div class="hidden md:block">
+          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">
+            العربية
+          </button>
+        </div>
+        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">
+          Donate Now
+        </a>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
+      <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
+      <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
+      <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
+      <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
+    </nav>
+  </header>
 
   <!-- Hero Section -->
-  <!-- ... your hero section code ... -->
+  <section id="homeHeroSection" class="w-full flex flex-col justify-center items-center text-center text-white relative">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 w-full flex flex-col justify-center items-center px-4">
+      <h2 id="homeHeroTitle" class="text-3xl font-bold mb-4" data-translate="hero-title"></h2>
+      <p id="homeHeroSubtitle" class="mb-6 max-w-xl" data-translate="hero-text"></p>
+    </div>
+  </section>
 
   <!-- Main Content -->
-  <!-- ... your main content code ... -->
-
-  <!-- Footer: Always LTR, but "Follow us on" switches direction -->
-  <footer dir="ltr" class="bg-gray-900 text-gray-300 py-8 px-6 md:px-20">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-      <p class="mb-4 md:mb-0 text-left w-full md:w-auto">&copy; 2025 Voices of Truth. All rights reserved.</p>
-      <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-        <span 
-          class="text-white font-extrabold tracking-wide text-lg md:text-base uppercase" 
-          data-translate="follow-us" 
-          id="footer-follow-us"
-        >Follow us on:</span>
-        <div class="flex space-x-8 text-white">
-          <!-- Facebook -->
-          <a href="https://www.facebook.com/bilal.a.kareem/" aria-label="Facebook" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
-            <i class="fab fa-facebook-f fa-fw text-4xl"></i>
-          </a>
-          <!-- X (custom inline SVG) -->
-          <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
-            <svg 
-              class="w-10 h-10 text-white" 
-              viewBox="0 0 1200 1227" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" 
-                fill="currentColor"
-              />
-            </svg>
-          </a>
-          <!-- YouTube -->
-          <a href="https://www.youtube.com/@BilalKareem" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
-            <i class="fab fa-youtube fa-fw text-4xl"></i>
-          </a>
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/bilalakareem/" aria-label="Instagram" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
-            <i class="fab fa-instagram fa-fw text-4xl"></i>
-          </a>
+  <main class="p-6 max-w-6xl mx-auto space-y-10">
+    <section>
+      <h3 class="text-2xl font-bold mb-6 text-center" data-translate="video-title">Featured Videos</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="videoContainer">
+        <!-- Video 1 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo1Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo1Title"></p>
         </div>
+        <!-- Video 2 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo2Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo2Title"></p>
+        </div>
+        <!-- Video 3 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo3Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo3Title"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-6 mt-10">
+    <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
+      <div>
+        <h5 class="font-bold mb-2" data-translate="follow-us">Follow us on:</h5>
+        <ul class="space-y-1">
+          <li>
+            <a href="https://www.facebook.com/bilal.a.kareem/" class="hover:underline" target="_blank" rel="noopener">Facebook</a>
+          </li>
+          <li>
+            <a href="https://x.com/BilalKareem" class="hover:underline" target="_blank" rel="noopener">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bilalakareem/" class="hover:underline" target="_blank" rel="noopener">Instagram</a>
+          </li>
+        </ul>
       </div>
     </div>
   </footer>
@@ -130,18 +171,6 @@
           el.innerHTML = translations[currentLang][key];
         }
       });
-
-      // Force RTL only on the "Follow us on" span in Arabic, otherwise LTR
-      const footerFollowUs = document.getElementById("footer-follow-us");
-      if (footerFollowUs) {
-        if (currentLang === "ar") {
-          footerFollowUs.setAttribute("dir", "rtl");
-          footerFollowUs.classList.remove("uppercase");
-        } else {
-          footerFollowUs.setAttribute("dir", "ltr");
-          footerFollowUs.classList.add("uppercase");
-        }
-      }
     }
 
     function toggleLanguage() {
@@ -189,6 +218,7 @@
 
       const title = lang === "ar" ? heroData.titleAr : heroData.title;
       const subtitle = lang === "ar" ? heroData.subtitleAr : heroData.subtitle;
+
       document.getElementById("homeHeroTitle").textContent = (title !== undefined && title !== null) ? title : "";
       document.getElementById("homeHeroSubtitle").textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : "";
 
