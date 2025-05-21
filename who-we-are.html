@@ -201,12 +201,13 @@
 
     function updateContent() {
       const lang = currentLang || "en";
-      const video = (siteContent.whoWeAre && siteContent.whoWeAre.video) || {};
+      // FIX: Use videoUrl directly from whoWeAre
+      const videoUrl = siteContent.whoWeAre && siteContent.whoWeAre.videoUrl;
 
       const iframe = document.getElementById('page1VideoIframe');
       const titleElem = document.getElementById('page1VideoTitle');
 
-      const embedUrl = convertToEmbedUrl(video.url);
+      const embedUrl = convertToEmbedUrl(videoUrl);
 
       if (embedUrl) {
         iframe.src = embedUrl;
@@ -216,7 +217,7 @@
         iframe.style.display = 'none'; // Hide iframe if no embeddable video
       }
 
-      titleElem.textContent = video.title || '';
+      titleElem.textContent = ''; // You can set a title from JSON if you add it
     }
   </script>
 
