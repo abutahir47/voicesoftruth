@@ -191,9 +191,30 @@
   </div>
 
   <script>
+    function toYouTubeEmbedUrl(url) {
+      if (!url) return '';
+      try {
+        // Channel URLs cannot be embedded
+        if (url.includes('/@') || url.includes('/channel/')) return '';
+        // Watch URLs
+        let match = url.match(/v=([^&]+)/);
+        if (match) return `https://www.youtube.com/embed/${match[1]}`;
+        // Short URLs
+        match = url.match(/youtu\.be\/([^?&]+)/);
+        if (match) return `https://www.youtube.com/embed/${match[1]}`;
+        // Embed URLs
+        match = url.match(/youtube\.com\/embed\/([^?&]+)/);
+        if (match) return url;
+        // Fallback: not embeddable
+        return '';
+      } catch {
+        return '';
+      }
+    }
+
     function loadContent() {
       const data = JSON.parse(localStorage.getItem('siteContent')) || {
-        home: { 
+        home: {
           hero: {
             title: '', titleAr: '',
             subtitle: '', subtitleAr: '',
@@ -298,7 +319,7 @@
           ]
         },
         whoWeAre: {
-          videoUrl: document.getElementById('whoVideoUrl').value
+          videoUrl: toYouTubeEmbedUrl(document.getElementById('whoVideoUrl').value)
         },
         whatWeDo: {
           heroTitle: document.getElementById('whatHeroTitle').value,
@@ -325,26 +346,24 @@
           mainTextAr: document.getElementById('involvedMainTextAr').value
         }
       };
-
       localStorage.setItem('siteContent', JSON.stringify(data));
       alert('Content saved!');
     }
 
-    // Export JSON button functionality
     function exportContentAsJSON() {
       const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-      const jsonStr = JSON.stringify(data, null, 2);
-      const blob = new Blob([jsonStr], { type: "application/json" });
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
       const url = URL.createObjectURL(blob);
-
       const a = document.createElement('a');
       a.href = url;
       a.download = 'siteContent.json';
+      document.body.appendChild(a);
       a.click();
-
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
+    // Load content on page load
     window.onload = loadContent;
   </script>
 </body>
