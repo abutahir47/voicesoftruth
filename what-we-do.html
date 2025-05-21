@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What We Do - Voices of Truth</title>
+  <title>Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     :root {
-      --hero-desktop-height: 400px;
-      --hero-mobile-height: 250px;
+      --home-hero-desktop-height: 400px;
+      --home-hero-mobile-height: 250px;
     }
-    #whatHeroSection {
-      min-height: var(--hero-desktop-height);
+    #homeHeroSection {
+      min-height: var(--home-hero-desktop-height);
       background-size: cover;
       background-position: center center;
       background-color: #1f2937;
     }
     @media (max-width: 768px) {
-      #whatHeroSection {
-        min-height: var(--hero-mobile-height);
+      #homeHeroSection {
+        min-height: var(--home-hero-mobile-height);
       }
     }
   </style>
 </head>
-<body class="bg-white text-gray-900 m-0 p-0 flex flex-col min-h-screen" dir="ltr">
+<body class="bg-white text-gray-900 m-0 p-0" dir="ltr">
 
   <!-- Header -->
   <header class="bg-white shadow-md w-full h-[64px] relative z-50">
@@ -45,9 +45,13 @@
           <span class="w-6 h-0.5 bg-black"></span>
         </button>
         <div class="hidden md:block">
-          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">العربية</button>
+          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">
+            العربية
+          </button>
         </div>
-        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
+        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">
+          Donate Now
+        </a>
       </div>
     </div>
     <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
@@ -59,17 +63,42 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="whatHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
-    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-    <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title"></h1>
-      <p id="whatHeroSubtitle" class="text-lg" data-translate="what-subtitle"></p>
+  <section id="homeHeroSection" class="w-full flex flex-col justify-center items-center text-center text-white relative">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 w-full flex flex-col justify-center items-center px-4">
+      <h2 id="homeHeroTitle" class="text-3xl font-bold mb-4" data-translate="hero-title"></h2>
+      <p id="homeHeroSubtitle" class="mb-6 max-w-xl" data-translate="hero-text"></p>
     </div>
   </section>
 
   <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center text-center flex-grow min-h-[300px]">
-    <div id="whatMainText"></div>
+  <main class="p-6 max-w-6xl mx-auto space-y-10">
+    <section>
+      <h3 class="text-2xl font-bold mb-6 text-center" data-translate="video-title">Featured Videos</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="videoContainer">
+        <!-- Video 1 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo1Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo1Title"></p>
+        </div>
+        <!-- Video 2 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo2Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo2Title"></p>
+        </div>
+        <!-- Video 3 -->
+        <div class="flex flex-col items-center">
+          <div class="transition-transform duration-300 transform hover:scale-105 rounded overflow-hidden aspect-w-16 aspect-h-9 shadow-md w-full">
+            <iframe id="homeVideo3Iframe" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+          </div>
+          <p class="mt-3 text-center text-sm font-medium" id="homeVideo3Title"></p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer: Always LTR, only icons, no "Follow us on" text -->
@@ -96,8 +125,8 @@
               />
             </svg>
           </a>
-          <!-- YouTube -->
-          <a href="https://www.youtube.com/@BilalKareem" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
+          <!-- YouTube (updated link) -->
+          <a href="https://www.youtube.com/@OGNTV" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
             <i class="fab fa-youtube fa-fw text-3xl md:text-4xl"></i>
           </a>
           <!-- Instagram -->
@@ -114,6 +143,7 @@
     // Set this to your actual JSON file URL on GitHub Pages!
     const jsonUrl = "https://voicesoftruth.netlify.app/siteContent.json?v=" + Date.now();
 
+    // Language toggle and translation logic
     const translations = {
       en: {
         "site-title": "Voices<br>of Truth",
@@ -121,8 +151,12 @@
         "nav-what": "What We Do",
         "nav-involved": "Get Involved",
         "donate": "Donate Now",
-        "what-title": "",
-        "what-subtitle": ""
+        "hero-title": "",
+        "hero-text": "",
+        "video-title": "Featured Videos",
+        "video-1": "What We Stand For",
+        "video-2": "Who Are HTS",
+        "video-3": "Hope Through Action"
       },
       ar: {
         "site-title": "أصوات<br>الحقيقة",
@@ -130,8 +164,12 @@
         "nav-what": "ماذا نفعل",
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
-        "what-title": "",
-        "what-subtitle": ""
+        "hero-title": "",
+        "hero-text": "",
+        "video-title": "فيديوهات مميزة",
+        "video-1": "ما نمثله",
+        "video-2": "من هم هيئة تحرير الشام",
+        "video-3": "الأمل من خلال العمل"
       }
     };
 
@@ -140,13 +178,10 @@
 
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
-      document.documentElement.lang = currentLang;
-
       const langToggle = document.getElementById("lang-toggle");
       const langMobile = document.getElementById("lang-toggle-mobile");
       if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
       if (langMobile) langMobile.textContent = currentLang === "ar" ? "English" : "العربية";
-
       document.querySelectorAll("[data-translate]").forEach(el => {
         const key = el.getAttribute("data-translate");
         if (translations[currentLang][key]) {
@@ -159,7 +194,8 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
-      updateWhatWeDoContent();
+      updateHomeHeroContent();
+      updateHomeVideos();
     }
 
     function toggleMenu() {
@@ -167,10 +203,19 @@
       menu.classList.toggle('hidden');
     }
 
+    // Highlight current nav link
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("#main-nav a").forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("text-green-700", "font-semibold");
+      }
+    });
+
     document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
       await fetchSiteContent();
-      updateWhatWeDoContent();
+      updateHomeHeroContent();
+      updateHomeVideos();
     });
 
     async function fetchSiteContent() {
@@ -179,47 +224,50 @@
         if (!response.ok) throw new Error("Could not load site content JSON.");
         siteContent = await response.json();
       } catch (err) {
-        siteContent = {};
+        siteContent = {}; // fallback to empty
         console.error("Error loading site content:", err);
       }
     }
 
-    function updateWhatWeDoContent() {
+    function updateHomeHeroContent() {
       const lang = currentLang || "en";
-      const what = siteContent.whatWeDo || {};
+      const heroData = (siteContent.home && siteContent.home.hero) || {};
 
-      // Use language-specific fields; show nothing if blank
-      const title = lang === "ar" ? what.heroTitleAr : what.heroTitle;
-      const subtitle = lang === "ar" ? what.heroSubtitleAr : what.heroSubtitle;
-      const mainText = lang === "ar" ? what.mainTextAr : what.mainText;
+      const title = lang === "ar" ? heroData.titleAr : heroData.title;
+      const subtitle = lang === "ar" ? heroData.subtitleAr : heroData.subtitle;
+      document.getElementById("homeHeroTitle").textContent = (title !== undefined && title !== null) ? title : "";
+      document.getElementById("homeHeroSubtitle").textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : "";
 
-      // Set hero background image and position
-      const hero = document.getElementById("whatHeroSection");
-      if (hero) {
-        if (what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
-        hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
+      const heroSection = document.getElementById("homeHeroSection");
+      if (heroSection) {
+        if (heroData.bg) heroSection.style.backgroundImage = `url('${heroData.bg}')`;
+        heroSection.style.backgroundPosition = `center ${heroData.position || 'center'}`;
+        document.documentElement.style.setProperty('--home-hero-desktop-height', heroData.height || '400px');
+        document.documentElement.style.setProperty('--home-hero-mobile-height', heroData.heightMobile || '250px');
       }
+    }
 
-      // Set hero heights via CSS variables
-      document.documentElement.style.setProperty(
-        '--hero-desktop-height',
-        what.heroHeight || '400px'
-      );
-      document.documentElement.style.setProperty(
-        '--hero-mobile-height',
-        what.heroHeightMobile || '250px'
-      );
+    function youtubeToEmbed(url) {
+      const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(regExp);
+      return match && match[1]
+        ? `https://www.youtube.com/embed/${match[1]}`
+        : '';
+    }
 
-      // Set hero title and subtitle (no fallback text)
-      const titleElem = document.getElementById("whatHeroTitle");
-      if (titleElem) titleElem.textContent = (title !== undefined && title !== null) ? title : '';
-
-      const subtitleElem = document.getElementById("whatHeroSubtitle");
-      if (subtitleElem) subtitleElem.textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : '';
-
-      // Set main text content
-      const textElem = document.getElementById("whatMainText");
-      if (textElem) textElem.innerHTML = (mainText !== undefined && mainText !== null) ? mainText : '';
+    function updateHomeVideos() {
+      const videos = (siteContent.home && siteContent.home.videos) || [];
+      for (let i = 0; i < 3; i++) {
+        const titleElem = document.getElementById(`homeVideo${i+1}Title`);
+        const iframeElem = document.getElementById(`homeVideo${i+1}Iframe`);
+        if (videos[i]) {
+          titleElem.textContent = videos[i].title || `Video ${i+1}`;
+          iframeElem.src = youtubeToEmbed(videos[i].url) || '';
+        } else {
+          titleElem.textContent = `Video ${i+1}`;
+          iframeElem.src = '';
+        }
+      }
     }
   </script>
 </body>
