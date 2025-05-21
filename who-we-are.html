@@ -70,7 +70,7 @@
           <!-- X (custom inline SVG) -->
           <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
             <svg
-              class="w-8 h-8 md:w-8 md:h-8 text-white"
+              class="w-8 h-8 md:w-10 md:h-10 text-white"
               viewBox="0 0 1200 1227"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -148,18 +148,36 @@
       menu.classList.toggle('hidden');
     }
 
-    // Convert YouTube watch URL to embed URL
+    // Improved YouTube embed URL converter
     function convertToEmbedUrl(youtubeUrl) {
       try {
         const url = new URL(youtubeUrl);
+
+        // Detect channel URLs and don't embed
+        if (url.pathname.startsWith('/@') || url.pathname.startsWith('/channel/')) {
+          return ''; // Cannot embed channel URLs
+        }
+
+        // Extract video ID from watch URLs
         const videoId = url.searchParams.get('v');
         if (videoId) {
           return `https://www.youtube.com/embed/${videoId}`;
         }
-        // If URL is already embed or different format, return as is
-        return youtubeUrl;
+
+        // Check if already embed URL
+        const embedMatch = youtubeUrl.match(/youtube\.com\/embed\/([^?&]+)/);
+        if (embedMatch) {
+          return youtubeUrl;
+        }
+
+        // Check short URL format
+        const shortMatch = youtubeUrl.match(/youtu\.be\/([^?&]+)/);
+        if (shortMatch) {
+          return `https://www.youtube.com/embed/${shortMatch[1]}`;
+        }
+
+        return '';
       } catch (e) {
-        // Invalid URL, return empty string
         return '';
       }
     }
@@ -188,10 +206,16 @@
       const iframe = document.getElementById('page1VideoIframe');
       const titleElem = document.getElementById('page1VideoTitle');
 
-      // Convert to embed URL if needed
       const embedUrl = convertToEmbedUrl(video.url);
 
-      iframe.src = embedUrl || 'https://www.youtube.com/embed/AcFEffqsHzc'; // default fallback
+      if (embedUrl) {
+        iframe.src = embedUrl;
+        iframe.style.display = 'block';
+      } else {
+        iframe.src = '';
+        iframe.style.display = 'none'; // Hide iframe if no embeddable video
+      }
+
       titleElem.textContent = video.title || '';
     }
   </script>
