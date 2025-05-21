@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     :root {
-      --involved-hero-desktop-height: 400px;
-      --involved-hero-mobile-height: 250px;
+      --involved-hero-desktop-height: 400px; /* fallback */
+      --involved-hero-mobile-height: 250px;  /* fallback */
     }
     #involvedHeroSection {
       min-height: var(--involved-hero-desktop-height);
@@ -85,7 +85,7 @@
           <!-- X (custom inline SVG) -->
           <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
             <svg
-              class="w-8 h-8 md:w-8 md:h-8 text-white"
+              class="w-8 h-8 md:w-10 md:h-10 text-white"
               viewBox="0 0 1200 1227"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@
               />
             </svg>
           </a>
-          <!-- YouTube -->
+          <!-- YouTube (links to channel, not video embed) -->
           <a href="https://www.youtube.com/@OGNTV" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
             <i class="fab fa-youtube fa-fw text-3xl md:text-4xl"></i>
           </a>
