@@ -29,5 +29,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Automated update of siteContent.json"
-            git push
+            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/abutahir47/voicesoftruth.git
+            git push origin HEAD:main
           fi
