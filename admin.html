@@ -9,45 +9,371 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col items-center p-6">
   <div class="w-full max-w-3xl bg-white rounded-lg shadow-md p-8 space-y-8">
     <h1 class="text-3xl font-bold text-center">Admin Panel</h1>
-    <!-- ... your form fields as before ... -->
-    <!-- Add your form fields here (as in your paste.txt) -->
 
+    <!-- Home Page Hero Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Home Page Hero Section</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="homeHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
+          <input type="text" id="homeHeroTitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
+          <input type="text" id="homeHeroTitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
+          <input type="text" id="homeHeroSubtitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
+          <input type="text" id="homeHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroBg" class="block font-medium mb-1">Hero Background URL</label>
+          <input type="text" id="homeHeroBg" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
+          <input type="text" id="homeHeroPosition" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
+          <input type="text" id="homeHeroHeight" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="homeHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
+          <input type="text" id="homeHeroHeightMobile" class="w-full border rounded px-3 py-2" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Home Videos Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Home Videos</h2>
+      <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="homeVideo1Title" class="block font-medium mb-1">Video 1 Title</label>
+            <input type="text" id="homeVideo1Title" class="w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label for="homeVideo1Url" class="block font-medium mb-1">Video 1 URL</label>
+            <input type="text" id="homeVideo1Url" class="w-full border rounded px-3 py-2" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="homeVideo2Title" class="block font-medium mb-1">Video 2 Title</label>
+            <input type="text" id="homeVideo2Title" class="w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label for="homeVideo2Url" class="block font-medium mb-1">Video 2 URL</label>
+            <input type="text" id="homeVideo2Url" class="w-full border rounded px-3 py-2" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="homeVideo3Title" class="block font-medium mb-1">Video 3 Title</label>
+            <input type="text" id="homeVideo3Title" class="w-full border rounded px-3 py-2" />
+          </div>
+          <div>
+            <label for="homeVideo3Url" class="block font-medium mb-1">Video 3 URL</label>
+            <input type="text" id="homeVideo3Url" class="w-full border rounded px-3 py-2" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Who We Are</h2>
+      <div>
+        <label for="whoVideoUrl" class="block font-medium mb-1">Video URL</label>
+        <input type="text" id="whoVideoUrl" class="w-full border rounded px-3 py-2" />
+      </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b pb-2">What We Do</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="whatHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
+          <input type="text" id="whatHeroTitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
+          <input type="text" id="whatHeroTitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
+          <input type="text" id="whatHeroSubtitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
+          <input type="text" id="whatHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroBg" class="block font-medium mb-1">Hero Background URL</label>
+          <input type="text" id="whatHeroBg" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
+          <input type="text" id="whatHeroPosition" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
+          <input type="text" id="whatHeroHeight" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="whatHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
+          <input type="text" id="whatHeroHeightMobile" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div class="md:col-span-2">
+          <label for="whatMainText" class="block font-medium mb-1">Main Text (English)</label>
+          <textarea id="whatMainText" rows="4" class="w-full border rounded px-3 py-2"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <label for="whatMainTextAr" class="block font-medium mb-1">Main Text (Arabic)</label>
+          <textarea id="whatMainTextAr" rows="4" class="w-full border rounded px-3 py-2"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Get Involved</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="involvedHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
+          <input type="text" id="involvedHeroTitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
+          <input type="text" id="involvedHeroTitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
+          <input type="text" id="involvedHeroSubtitle" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
+          <input type="text" id="involvedHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroBg" class="block font-medium mb-1">Hero Background URL</label>
+          <input type="text" id="involvedHeroBg" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
+          <input type="text" id="involvedHeroPosition" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
+          <input type="text" id="involvedHeroHeight" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div>
+          <label for="involvedHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
+          <input type="text" id="involvedHeroHeightMobile" class="w-full border rounded px-3 py-2" />
+        </div>
+        <div class="md:col-span-2">
+          <label for="involvedMainText" class="block font-medium mb-1">Main Text (English)</label>
+          <textarea id="involvedMainText" rows="4" class="w-full border rounded px-3 py-2"></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <label for="involvedMainTextAr" class="block font-medium mb-1">Main Text (Arabic)</label>
+          <textarea id="involvedMainTextAr" rows="4" class="w-full border rounded px-3 py-2"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
     <button onclick="saveContent()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-6">
       Save
     </button>
     <button onclick="exportContentAsJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Export JSON
     </button>
-    <!-- New Push to GitHub Button -->
     <button onclick="pushContentToGitHub()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Push to GitHub
     </button>
   </div>
 
   <script>
-    // ... your functions: toYouTubeEmbedUrl, loadContent, saveContent, exportContentAsJSON ...
-    // (Paste all your existing JS here)
+    function loadContent() {
+      const data = JSON.parse(localStorage.getItem('siteContent')) || {
+        home: {
+          hero: {
+            title: '', titleAr: '',
+            subtitle: '', subtitleAr: '',
+            bg: '', position: '',
+            height: '', heightMobile: ''
+          },
+          videos: [
+            { title: '', url: '' },
+            { title: '', url: '' },
+            { title: '', url: '' }
+          ]
+        },
+        whoWeAre: { videoUrl: '' },
+        whatWeDo: {
+          heroTitle: '', heroTitleAr: '',
+          heroSubtitle: '', heroSubtitleAr: '',
+          heroBg: '', heroPosition: '',
+          heroHeight: '', heroHeightMobile: '',
+          mainText: '', mainTextAr: ''
+        },
+        getInvolved: {
+          heroTitle: '', heroTitleAr: '',
+          heroSubtitle: '', heroSubtitleAr: '',
+          heroBg: '', heroPosition: '',
+          heroHeight: '', heroHeightMobile: '',
+          mainText: '', mainTextAr: ''
+        }
+      };
 
-    // --- Push to GitHub Function ---
+      // Home hero
+      document.getElementById('homeHeroTitle').value = data.home.hero.title;
+      document.getElementById('homeHeroTitleAr').value = data.home.hero.titleAr;
+      document.getElementById('homeHeroSubtitle').value = data.home.hero.subtitle;
+      document.getElementById('homeHeroSubtitleAr').value = data.home.hero.subtitleAr;
+      document.getElementById('homeHeroBg').value = data.home.hero.bg;
+      document.getElementById('homeHeroPosition').value = data.home.hero.position;
+      document.getElementById('homeHeroHeight').value = data.home.hero.height;
+      document.getElementById('homeHeroHeightMobile').value = data.home.hero.heightMobile;
+
+      // Home videos
+      document.getElementById('homeVideo1Title').value = data.home.videos[0].title;
+      document.getElementById('homeVideo1Url').value = data.home.videos[0].url;
+      document.getElementById('homeVideo2Title').value = data.home.videos[1].title;
+      document.getElementById('homeVideo2Url').value = data.home.videos[1].url;
+      document.getElementById('homeVideo3Title').value = data.home.videos[2].title;
+      document.getElementById('homeVideo3Url').value = data.home.videos[2].url;
+
+      // Who we are
+      document.getElementById('whoVideoUrl').value = data.whoWeAre.videoUrl;
+
+      // What we do
+      document.getElementById('whatHeroTitle').value = data.whatWeDo.heroTitle;
+      document.getElementById('whatHeroTitleAr').value = data.whatWeDo.heroTitleAr;
+      document.getElementById('whatHeroSubtitle').value = data.whatWeDo.heroSubtitle;
+      document.getElementById('whatHeroSubtitleAr').value = data.whatWeDo.heroSubtitleAr;
+      document.getElementById('whatHeroBg').value = data.whatWeDo.heroBg;
+      document.getElementById('whatHeroPosition').value = data.whatWeDo.heroPosition;
+      document.getElementById('whatHeroHeight').value = data.whatWeDo.heroHeight;
+      document.getElementById('whatHeroHeightMobile').value = data.whatWeDo.heroHeightMobile;
+      document.getElementById('whatMainText').value = data.whatWeDo.mainText;
+      document.getElementById('whatMainTextAr').value = data.whatWeDo.mainTextAr;
+
+      // Get involved
+      document.getElementById('involvedHeroTitle').value = data.getInvolved.heroTitle;
+      document.getElementById('involvedHeroTitleAr').value = data.getInvolved.heroTitleAr;
+      document.getElementById('involvedHeroSubtitle').value = data.getInvolved.heroSubtitle;
+      document.getElementById('involvedHeroSubtitleAr').value = data.getInvolved.heroSubtitleAr;
+      document.getElementById('involvedHeroBg').value = data.getInvolved.heroBg;
+      document.getElementById('involvedHeroPosition').value = data.getInvolved.heroPosition;
+      document.getElementById('involvedHeroHeight').value = data.getInvolved.heroHeight;
+      document.getElementById('involvedHeroHeightMobile').value = data.getInvolved.heroHeightMobile;
+      document.getElementById('involvedMainText').value = data.getInvolved.mainText;
+      document.getElementById('involvedMainTextAr').value = data.getInvolved.mainTextAr;
+    }
+
+    function saveContent() {
+      const data = {
+        home: {
+          hero: {
+            title: document.getElementById('homeHeroTitle').value,
+            titleAr: document.getElementById('homeHeroTitleAr').value,
+            subtitle: document.getElementById('homeHeroSubtitle').value,
+            subtitleAr: document.getElementById('homeHeroSubtitleAr').value,
+            bg: document.getElementById('homeHeroBg').value,
+            position: document.getElementById('homeHeroPosition').value,
+            height: document.getElementById('homeHeroHeight').value,
+            heightMobile: document.getElementById('homeHeroHeightMobile').value
+          },
+          videos: [
+            {
+              title: document.getElementById('homeVideo1Title').value,
+              url: document.getElementById('homeVideo1Url').value
+            },
+            {
+              title: document.getElementById('homeVideo2Title').value,
+              url: document.getElementById('homeVideo2Url').value
+            },
+            {
+              title: document.getElementById('homeVideo3Title').value,
+              url: document.getElementById('homeVideo3Url').value
+            }
+          ]
+        },
+        whoWeAre: {
+          videoUrl: document.getElementById('whoVideoUrl').value
+        },
+        whatWeDo: {
+          heroTitle: document.getElementById('whatHeroTitle').value,
+          heroTitleAr: document.getElementById('whatHeroTitleAr').value,
+          heroSubtitle: document.getElementById('whatHeroSubtitle').value,
+          heroSubtitleAr: document.getElementById('whatHeroSubtitleAr').value,
+          heroBg: document.getElementById('whatHeroBg').value,
+          heroPosition: document.getElementById('whatHeroPosition').value,
+          heroHeight: document.getElementById('whatHeroHeight').value,
+          heroHeightMobile: document.getElementById('whatHeroHeightMobile').value,
+          mainText: document.getElementById('whatMainText').value,
+          mainTextAr: document.getElementById('whatMainTextAr').value
+        },
+        getInvolved: {
+          heroTitle: document.getElementById('involvedHeroTitle').value,
+          heroTitleAr: document.getElementById('involvedHeroTitleAr').value,
+          heroSubtitle: document.getElementById('involvedHeroSubtitle').value,
+          heroSubtitleAr: document.getElementById('involvedHeroSubtitleAr').value,
+          heroBg: document.getElementById('involvedHeroBg').value,
+          heroPosition: document.getElementById('involvedHeroPosition').value,
+          heroHeight: document.getElementById('involvedHeroHeight').value,
+          heroHeightMobile: document.getElementById('involvedHeroHeightMobile').value,
+          mainText: document.getElementById('involvedMainText').value,
+          mainTextAr: document.getElementById('involvedMainTextAr').value
+        }
+      };
+      localStorage.setItem('siteContent', JSON.stringify(data));
+      alert('Content saved locally!');
+    }
+
+    function exportContentAsJSON() {
+      const data = localStorage.getItem('siteContent');
+      if (!data) {
+        alert('No content to export.');
+        return;
+      }
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'siteContent.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
     async function pushContentToGitHub() {
       const data = JSON.parse(localStorage.getItem('siteContent'));
       if (!data) {
-        alert('No content to push. Please save your changes first.');
+        alert('No content to push. Please save first.');
         return;
       }
-
       try {
-        const res = await fetch('/.netlify/functions/updateSiteContent', {
+        const response = await fetch('/.netlify/functions/updateSiteContent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ content: data })
         });
-
-        if (res.ok) {
+        if (response.ok) {
           alert('siteContent.json updated on GitHub!');
         } else {
-          const errorText = await res.text();
-          alert('Error updating file: ' + errorText);
+          const error = await response.text();
+          alert('Error updating file: ' + error);
         }
       } catch (err) {
         alert('Network error: ' + err.message);
