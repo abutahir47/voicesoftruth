@@ -9,201 +9,97 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col items-center p-6">
   <div class="w-full max-w-3xl bg-white rounded-lg shadow-md p-8 space-y-8">
     <h1 class="text-3xl font-bold text-center">Admin Panel</h1>
+    <!-- ... your form fields as before ... -->
 
-    <!-- Home Page Hero Section -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Home Page Hero Section</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="homeHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
-          <input type="text" id="homeHeroTitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
-          <input type="text" id="homeHeroTitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
-          <input type="text" id="homeHeroSubtitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
-          <input type="text" id="homeHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroBg" class="block font-medium mb-1">Hero Background URL</label>
-          <input type="text" id="homeHeroBg" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
-          <input type="text" id="homeHeroPosition" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
-          <input type="text" id="homeHeroHeight" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="homeHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
-          <input type="text" id="homeHeroHeightMobile" class="w-full border rounded px-3 py-2" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Home Videos Section -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Home Videos</h2>
-      <div class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="homeVideo1Title" class="block font-medium mb-1">Video 1 Title</label>
-            <input type="text" id="homeVideo1Title" class="w-full border rounded px-3 py-2" />
-          </div>
-          <div>
-            <label for="homeVideo1Url" class="block font-medium mb-1">Video 1 URL</label>
-            <input type="text" id="homeVideo1Url" class="w-full border rounded px-3 py-2" />
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="homeVideo2Title" class="block font-medium mb-1">Video 2 Title</label>
-            <input type="text" id="homeVideo2Title" class="w-full border rounded px-3 py-2" />
-          </div>
-          <div>
-            <label for="homeVideo2Url" class="block font-medium mb-1">Video 2 URL</label>
-            <input type="text" id="homeVideo2Url" class="w-full border rounded px-3 py-2" />
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="homeVideo3Title" class="block font-medium mb-1">Video 3 Title</label>
-            <input type="text" id="homeVideo3Title" class="w-full border rounded px-3 py-2" />
-          </div>
-          <div>
-            <label for="homeVideo3Url" class="block font-medium mb-1">Video 3 URL</label>
-            <input type="text" id="homeVideo3Url" class="w-full border rounded px-3 py-2" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Who We Are Section -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Who We Are</h2>
-      <div>
-        <label for="whoVideoUrl" class="block font-medium mb-1">Video URL</label>
-        <input type="text" id="whoVideoUrl" class="w-full border rounded px-3 py-2" />
-      </div>
-    </section>
-
-    <!-- What We Do Section -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">What We Do</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="whatHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
-          <input type="text" id="whatHeroTitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
-          <input type="text" id="whatHeroTitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
-          <input type="text" id="whatHeroSubtitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
-          <input type="text" id="whatHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroBg" class="block font-medium mb-1">Hero Background URL</label>
-          <input type="text" id="whatHeroBg" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
-          <input type="text" id="whatHeroPosition" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
-          <input type="text" id="whatHeroHeight" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="whatHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
-          <input type="text" id="whatHeroHeightMobile" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div class="md:col-span-2">
-          <label for="whatMainText" class="block font-medium mb-1">Main Text (English)</label>
-          <textarea id="whatMainText" rows="4" class="w-full border rounded px-3 py-2"></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <label for="whatMainTextAr" class="block font-medium mb-1">Main Text (Arabic)</label>
-          <textarea id="whatMainTextAr" rows="4" class="w-full border rounded px-3 py-2"></textarea>
-        </div>
-      </div>
-    </section>
-
-    <!-- Get Involved Section -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 border-b pb-2">Get Involved</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="involvedHeroTitle" class="block font-medium mb-1">Hero Title (English)</label>
-          <input type="text" id="involvedHeroTitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroTitleAr" class="block font-medium mb-1">Hero Title (Arabic)</label>
-          <input type="text" id="involvedHeroTitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroSubtitle" class="block font-medium mb-1">Hero Subtitle (English)</label>
-          <input type="text" id="involvedHeroSubtitle" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroSubtitleAr" class="block font-medium mb-1">Hero Subtitle (Arabic)</label>
-          <input type="text" id="involvedHeroSubtitleAr" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroBg" class="block font-medium mb-1">Hero Background URL</label>
-          <input type="text" id="involvedHeroBg" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroPosition" class="block font-medium mb-1">Hero Background Position</label>
-          <input type="text" id="involvedHeroPosition" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroHeight" class="block font-medium mb-1">Hero Height (Desktop)</label>
-          <input type="text" id="involvedHeroHeight" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div>
-          <label for="involvedHeroHeightMobile" class="block font-medium mb-1">Hero Height (Mobile)</label>
-          <input type="text" id="involvedHeroHeightMobile" class="w-full border rounded px-3 py-2" />
-        </div>
-        <div class="md:col-span-2">
-          <label for="involvedMainText" class="block font-medium mb-1">Main Text (English)</label>
-          <textarea id="involvedMainText" rows="4" class="w-full border rounded px-3 py-2"></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <label for="involvedMainTextAr" class="block font-medium mb-1">Main Text (Arabic)</label>
-          <textarea id="involvedMainTextAr" rows="4" class="w-full border rounded px-3 py-2"></textarea>
-        </div>
-      </div>
-    </section>
-
-    <!-- Action Buttons -->
+    <!-- Save/Export Buttons -->
     <button onclick="saveContent()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-6">
       Save
     </button>
     <button onclick="exportContentAsJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Export JSON
     </button>
+    <!-- New Push to GitHub Button -->
     <button onclick="pushContentToGitHub()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Push to GitHub
     </button>
+    <!--
+      Instructions:
+      1. Edit your content and click "Save" to update your browser's localStorage.
+      2. Click "Export JSON" to download the latest siteContent.json.
+      3. Click "Push to GitHub" to update your repo directly!
+    -->
   </div>
 
   <script>
-    // Your existing JS code here (loadContent, saveContent, exportContentAsJSON, pushContentToGitHub)
-    // Make sure to keep it as you posted earlier, no changes needed.
+    // ... your existing helper functions (toYouTubeEmbedUrl, loadContent, etc.) ...
+
+    // --- Push to GitHub Functionality ---
+
+    async function pushContentToGitHub() {
+      // ⚠️ WARNING: Never expose your real token in production or public code!
+      const GITHUB_TOKEN = 'YOUR_PERSONAL_ACCESS_TOKEN';
+      const OWNER = 'abutahir47';
+      const REPO = 'voicesoftruth';
+      const FILE_PATH = 'siteContent.json';
+
+      // 1. Collect current content
+      const data = JSON.parse(localStorage.getItem('siteContent'));
+      if (!data) {
+        alert('No content to push. Please save your changes first.');
+        return;
+      }
+      const contentString = JSON.stringify(data, null, 2);
+      const base64Content = btoa(unescape(encodeURIComponent(contentString))); // base64 encode
+
+      // 2. Get current SHA
+      let sha;
+      try {
+        const getRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`, {
+          headers: {
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
+            Accept: 'application/vnd.github+json'
+          }
+        });
+        if (!getRes.ok) throw new Error('Failed to get SHA');
+        const getData = await getRes.json();
+        sha = getData.sha;
+      } catch (err) {
+        alert('Failed to get SHA from GitHub. Check your token and network.');
+        return;
+      }
+
+      // 3. Make the PUT request to update the file
+      try {
+        const putRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
+            Accept: 'application/vnd.github+json'
+          },
+          body: JSON.stringify({
+            message: 'Update siteContent.json from admin panel',
+            content: base64Content,
+            sha: sha,
+            branch: 'main'
+          })
+        });
+
+        if (putRes.ok) {
+          alert('siteContent.json updated on GitHub!');
+        } else {
+          const errData = await putRes.json();
+          alert('Error updating file: ' + (errData.message || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Network or API error while updating file.');
+      }
+    }
+
+    // --- (Your existing code for loadContent, saveContent, exportContentAsJSON, etc.) ---
+    // (Paste your other script functions here as before)
+
+    // Example: loadContent on page load
+    window.onload = loadContent;
   </script>
 </body>
 </html>
