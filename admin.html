@@ -10,8 +10,8 @@
   <div class="w-full max-w-3xl bg-white rounded-lg shadow-md p-8 space-y-8">
     <h1 class="text-3xl font-bold text-center">Admin Panel</h1>
     <!-- ... your form fields as before ... -->
+    <!-- Add your form fields here (as in your paste.txt) -->
 
-    <!-- Save/Export Buttons -->
     <button onclick="saveContent()" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-6">
       Save
     </button>
@@ -22,83 +22,38 @@
     <button onclick="pushContentToGitHub()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Push to GitHub
     </button>
-    <!--
-      Instructions:
-      1. Edit your content and click "Save" to update your browser's localStorage.
-      2. Click "Export JSON" to download the latest siteContent.json.
-      3. Click "Push to GitHub" to update your repo directly!
-    -->
   </div>
 
   <script>
-    // ... your existing helper functions (toYouTubeEmbedUrl, loadContent, etc.) ...
+    // ... your functions: toYouTubeEmbedUrl, loadContent, saveContent, exportContentAsJSON ...
+    // (Paste all your existing JS here)
 
-    // --- Push to GitHub Functionality ---
-
+    // --- Push to GitHub Function ---
     async function pushContentToGitHub() {
-      // ⚠️ WARNING: Never expose your real token in production or public code!
-      const GITHUB_TOKEN = 'YOUR_PERSONAL_ACCESS_TOKEN';
-      const OWNER = 'abutahir47';
-      const REPO = 'voicesoftruth';
-      const FILE_PATH = 'siteContent.json';
-
-      // 1. Collect current content
       const data = JSON.parse(localStorage.getItem('siteContent'));
       if (!data) {
         alert('No content to push. Please save your changes first.');
         return;
       }
-      const contentString = JSON.stringify(data, null, 2);
-      const base64Content = btoa(unescape(encodeURIComponent(contentString))); // base64 encode
 
-      // 2. Get current SHA
-      let sha;
       try {
-        const getRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`, {
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-            Accept: 'application/vnd.github+json'
-          }
-        });
-        if (!getRes.ok) throw new Error('Failed to get SHA');
-        const getData = await getRes.json();
-        sha = getData.sha;
-      } catch (err) {
-        alert('Failed to get SHA from GitHub. Check your token and network.');
-        return;
-      }
-
-      // 3. Make the PUT request to update the file
-      try {
-        const putRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FILE_PATH}`, {
-          method: 'PUT',
-          headers: {
-            Authorization: `Bearer ${GITHUB_TOKEN}`,
-            Accept: 'application/vnd.github+json'
-          },
-          body: JSON.stringify({
-            message: 'Update siteContent.json from admin panel',
-            content: base64Content,
-            sha: sha,
-            branch: 'main'
-          })
+        const res = await fetch('/.netlify/functions/updateSiteContent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: data })
         });
 
-        if (putRes.ok) {
+        if (res.ok) {
           alert('siteContent.json updated on GitHub!');
         } else {
-          const errData = await putRes.json();
-          alert('Error updating file: ' + (errData.message || 'Unknown error'));
+          const errorText = await res.text();
+          alert('Error updating file: ' + errorText);
         }
       } catch (err) {
-        alert('Network or API error while updating file.');
+        alert('Network error: ' + err.message);
       }
     }
 
-    // --- (Your existing code for loadContent, saveContent, exportContentAsJSON, etc.) ---
-    // (Paste your other script functions here as before)
-
-    // Example: loadContent on page load
     window.onload = loadContent;
   </script>
 </body>
