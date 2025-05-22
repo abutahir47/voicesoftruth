@@ -1,24 +1,4 @@
-name: Update siteContent.json
-
-on:
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
-
-jobs:
-  update-json:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Update siteContent.json
-        run: |
-          # Replace this with your actual update logic.
-          # For example, you might fetch updated JSON from an API or admin panel.
-          # Here, we just echo a simple JSON update for demonstration.
-          echo '{"whoWeAre":{"videoUrl":"https://www.youtube.com/embed/ZpVAmWnyc00"}}' > siteContent.json
-
-     - name: Commit and push changes
+- name: Commit and push changes
   env:
     GITHUB_TOKEN: ${{ secrets.JSON_UPDATE_TOKEN }}
   run: |
