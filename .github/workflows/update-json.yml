@@ -1,14 +1,30 @@
-- name: Commit and push changes
-  env:
-    GITHUB_TOKEN: ${{ secrets.JSON_UPDATE_TOKEN }}
-  run: |
-    git config --local user.email "actions@github.com"
-    git config --local user.name "GitHub Actions"
-    git add siteContent.json
-    if git diff --cached --quiet; then
-      echo "No changes to commit"
-    else
-      git commit -m "Automated update of siteContent.json"
-      git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/abutahir47/voicesoftruth.git
-      git push origin HEAD:main
-    fi
+name: Update siteContent.json
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:    # Enables manual triggering via the Actions tab
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.JSON_UPDATE_TOKEN }}
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add siteContent.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Automated update of siteContent.json"
+            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/abutahir47/voicesoftruth.git
+            git push origin HEAD:main
+          fi
