@@ -181,31 +181,24 @@
     <button onclick="exportContentAsJSON()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
       Export JSON
     </button>
-    <!--
-      Instructions:
-      1. Edit your content and click "Save" to update your browser's localStorage.
-      2. Click "Export JSON" to download the latest siteContent.json.
-      3. Upload or replace this file in your GitHub repo.
-      4. Commit and push to update your public website content.
-    -->
+    <!-- Push to GitHub Button -->
+    <button onclick="pushContentToGitHub()" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-3 rounded shadow transition-colors w-full mt-2 mb-4">
+      Push to GitHub
+    </button>
   </div>
 
   <script>
+    // Helper for YouTube URLs
     function toYouTubeEmbedUrl(url) {
       if (!url) return '';
       try {
-        // Channel URLs cannot be embedded
         if (url.includes('/@') || url.includes('/channel/')) return '';
-        // Watch URLs
         let match = url.match(/v=([^&]+)/);
         if (match) return `https://www.youtube.com/embed/${match[1]}`;
-        // Short URLs
         match = url.match(/youtu\.be\/([^?&]+)/);
         if (match) return `https://www.youtube.com/embed/${match[1]}`;
-        // Embed URLs
         match = url.match(/youtube\.com\/embed\/([^?&]+)/);
         if (match) return url;
-        // Fallback: not embeddable
         return '';
       } catch {
         return '';
@@ -319,7 +312,7 @@
           ]
         },
         whoWeAre: {
-          videoUrl: toYouTubeEmbedUrl(document.getElementById('whoVideoUrl').value)
+          videoUrl: document.getElementById('whoVideoUrl').value
         },
         whatWeDo: {
           heroTitle: document.getElementById('whatHeroTitle').value,
@@ -347,23 +340,50 @@
         }
       };
       localStorage.setItem('siteContent', JSON.stringify(data));
-      alert('Content saved!');
+      alert('Content saved locally!');
     }
 
     function exportContentAsJSON() {
-      const data = JSON.parse(localStorage.getItem('siteContent')) || {};
-      const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+      const data = localStorage.getItem('siteContent');
+      if (!data) {
+        alert('No content to export. Please save your changes first.');
+        return;
+      }
+      const blob = new Blob([data], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
       a.download = 'siteContent.json';
-      document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
-    // Load content on page load
+    // --- Push to GitHub Function ---
+    async function pushContentToGitHub() {
+      const data = JSON.parse(localStorage.getItem('siteContent'));
+      if (!data) {
+        alert('No content to push. Please save your changes first.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/.netlify/functions/updateSiteContent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: data })
+        });
+
+        if (res.ok) {
+          alert('siteContent.json updated on GitHub!');
+        } else {
+          const errorText = await res.text();
+          alert('Error updating file: ' + errorText);
+        }
+      } catch (err) {
+        alert('Network error: ' + err.message);
+      }
+    }
+
     window.onload = loadContent;
   </script>
 </body>
