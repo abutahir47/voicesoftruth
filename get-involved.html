@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     :root {
-      --involved-hero-desktop-height: 400px; /* fallback */
-      --involved-hero-mobile-height: 250px;  /* fallback */
+      --involved-hero-desktop-height: 400px;
+      --involved-hero-mobile-height: 250px;
     }
     #involvedHeroSection {
       min-height: var(--involved-hero-desktop-height);
@@ -85,18 +85,17 @@
           <!-- X (custom inline SVG) -->
           <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
             <svg
-              class="w-8 h-8 md:w-8 md:h-8 text-white"
+              class="w-6 h-6 md:w-8 md:h-8 text-white"
               viewBox="0 0 1200 1227"
-              fill="none"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
-                fill="currentColor"
               />
             </svg>
           </a>
-          <!-- YouTube (links to channel, not video embed) -->
+          <!-- YouTube -->
           <a href="https://www.youtube.com/@OGNTV" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
             <i class="fab fa-youtube fa-fw text-3xl md:text-4xl"></i>
           </a>
@@ -141,7 +140,6 @@
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = currentLang;
-
       const langToggle = document.getElementById("lang-toggle");
       const langMobile = document.getElementById("lang-toggle-mobile");
       if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
