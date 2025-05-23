@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What We Do - Voices of Truth</title>
+  <title>Get Involved - Voices of Truth</title>
   <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
   <!-- Font Awesome CDN for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     :root {
-      --hero-desktop-height: 400px;
-      --hero-mobile-height: 250px;
+      --involved-hero-desktop-height: 400px;
+      --involved-hero-mobile-height: 250px;
     }
-    #whatHeroSection {
-      min-height: var(--hero-desktop-height);
+    #involvedHeroSection {
+      min-height: var(--involved-hero-desktop-height);
       background-size: cover;
       background-position: center center;
       background-color: #1f2937;
     }
     @media (max-width: 768px) {
-      #whatHeroSection {
-        min-height: var(--hero-mobile-height);
+      #involvedHeroSection {
+        min-height: var(--involved-hero-mobile-height);
       }
     }
   </style>
@@ -59,20 +59,20 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="whatHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
+  <section id="involvedHeroSection" class="relative flex flex-col items-center justify-center p-8 text-white text-center">
     <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <h1 id="whatHeroTitle" class="text-4xl font-bold mb-4" data-translate="what-title"></h1>
-      <p id="whatHeroSubtitle" class="text-lg" data-translate="what-subtitle"></p>
+      <h1 id="involvedHeroTitle" class="text-4xl font-bold mb-4" data-translate="involved-title"></h1>
+      <p id="involvedHeroSubtitle" class="text-lg" data-translate="involved-subtitle"></p>
     </div>
   </section>
 
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center text-center flex-grow min-h-[300px]">
-    <div id="whatMainText"></div>
+    <div id="involvedMainText"></div>
   </main>
 
-  <!-- Footer: Always LTR, only icons, YouTube links to @OGNTV -->
+  <!-- Footer: Always LTR, only icons, no "Follow us on" text -->
   <footer dir="ltr" class="bg-gray-900 text-gray-300 py-8 px-6 md:px-20 mt-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <p class="mb-6 md:mb-0 text-center md:text-left w-full md:w-auto">&copy; 2025 Voices of Truth. All rights reserved.</p>
@@ -85,18 +85,17 @@
           <!-- X (custom inline SVG) -->
           <a href="https://x.com/BilalKareem" aria-label="X" class="hover:text-yellow-400 transition-colors duration-300 inline-flex items-center" target="_blank" rel="noopener">
             <svg
-              class="w-8 h-8 md:w-8 md:h-8 text-white"
+              class="w-6 h-6 md:w-8 md:h-8 text-white"
               viewBox="0 0 1200 1227"
-              fill="none"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
-                fill="currentColor"
               />
             </svg>
           </a>
-          <!-- YouTube (updated link) -->
+          <!-- YouTube -->
           <a href="https://www.youtube.com/@OGNTV" aria-label="YouTube" class="hover:text-yellow-400 transition-colors duration-300" target="_blank" rel="noopener">
             <i class="fab fa-youtube fa-fw text-3xl md:text-4xl"></i>
           </a>
@@ -121,8 +120,8 @@
         "nav-what": "What We Do",
         "nav-involved": "Get Involved",
         "donate": "Donate Now",
-        "what-title": "",
-        "what-subtitle": ""
+        "involved-title": "",
+        "involved-subtitle": ""
       },
       ar: {
         "site-title": "أصوات<br>الحقيقة",
@@ -130,8 +129,8 @@
         "nav-what": "ماذا نفعل",
         "nav-involved": "شارك",
         "donate": "تبرع الآن",
-        "what-title": "",
-        "what-subtitle": ""
+        "involved-title": "",
+        "involved-subtitle": ""
       }
     };
 
@@ -141,7 +140,6 @@
     function applyLanguage() {
       document.body.dir = currentLang === "ar" ? "rtl" : "ltr";
       document.documentElement.lang = currentLang;
-
       const langToggle = document.getElementById("lang-toggle");
       const langMobile = document.getElementById("lang-toggle-mobile");
       if (langToggle) langToggle.textContent = currentLang === "ar" ? "English" : "العربية";
@@ -159,7 +157,7 @@
       currentLang = currentLang === "en" ? "ar" : "en";
       localStorage.setItem("language", currentLang);
       applyLanguage();
-      updateWhatWeDoContent();
+      updateInvolvedContent();
     }
 
     function toggleMenu() {
@@ -170,7 +168,7 @@
     document.addEventListener("DOMContentLoaded", async () => {
       applyLanguage();
       await fetchSiteContent();
-      updateWhatWeDoContent();
+      updateInvolvedContent();
     });
 
     async function fetchSiteContent() {
@@ -184,41 +182,41 @@
       }
     }
 
-    function updateWhatWeDoContent() {
+    function updateInvolvedContent() {
       const lang = currentLang || "en";
-      const what = siteContent.whatWeDo || {};
+      const involved = siteContent.getInvolved || {};
 
       // Use language-specific fields; show nothing if blank
-      const title = lang === "ar" ? what.heroTitleAr : what.heroTitle;
-      const subtitle = lang === "ar" ? what.heroSubtitleAr : what.heroSubtitle;
-      const mainText = lang === "ar" ? what.mainTextAr : what.mainText;
+      const title = lang === "ar" ? involved.heroTitleAr : involved.heroTitle;
+      const subtitle = lang === "ar" ? involved.heroSubtitleAr : involved.heroSubtitle;
+      const mainText = lang === "ar" ? involved.mainTextAr : involved.mainText;
 
       // Set hero background image and position
-      const hero = document.getElementById("whatHeroSection");
+      const hero = document.getElementById("involvedHeroSection");
       if (hero) {
-        if (what.heroBg) hero.style.backgroundImage = `url('${what.heroBg}')`;
-        hero.style.backgroundPosition = `center ${what.heroPosition || 'center'}`;
+        if (involved.heroBg) hero.style.backgroundImage = `url('${involved.heroBg}')`;
+        hero.style.backgroundPosition = `center ${involved.heroPosition || 'center'}`;
       }
 
       // Set hero heights via CSS variables
       document.documentElement.style.setProperty(
-        '--hero-desktop-height',
-        what.heroHeight || '400px'
+        '--involved-hero-desktop-height',
+        involved.heroHeight || '400px'
       );
       document.documentElement.style.setProperty(
-        '--hero-mobile-height',
-        what.heroHeightMobile || '250px'
+        '--involved-hero-mobile-height',
+        involved.heroHeightMobile || '250px'
       );
 
       // Set hero title and subtitle (no fallback text)
-      const titleElem = document.getElementById("whatHeroTitle");
+      const titleElem = document.getElementById("involvedHeroTitle");
       if (titleElem) titleElem.textContent = (title !== undefined && title !== null) ? title : '';
 
-      const subtitleElem = document.getElementById("whatHeroSubtitle");
+      const subtitleElem = document.getElementById("involvedHeroSubtitle");
       if (subtitleElem) subtitleElem.textContent = (subtitle !== undefined && subtitle !== null) ? subtitle : '';
 
       // Set main text content
-      const textElem = document.getElementById("whatMainText");
+      const textElem = document.getElementById("involvedMainText");
       if (textElem) textElem.innerHTML = (mainText !== undefined && mainText !== null) ? mainText : '';
     }
   </script>
