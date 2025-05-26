@@ -30,12 +30,14 @@
   <!-- Header -->
   <header class="bg-white shadow-md w-full h-[64px] relative z-50">
     <div class="w-full flex justify-between items-stretch h-full">
-      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center space-x-2 rtl:space-x-reverse">
-        <!-- Logo: always visible -->
-        <img src="img/logo.png" alt="Voices of Truth Logo" class="h-8 w-auto" />
-        <!-- Text: hidden on mobile, visible on md+ -->
-        <span class="hidden md:inline-block" data-translate="site-title">Voices<br>of Truth</span>
-      </a>
+      <a href="index.html"
+   class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
+  <!-- Text: hidden on mobile, visible on md+ -->
+  <span class="hidden md:inline-block mr-2" data-translate="site-title">Voices<br>of Truth</span>
+  <!-- Logo: always visible, to the right of text -->
+  <img src="img/logo.png" alt="Voices of Truth Logo" class="h-8 w-auto" />
+</a>
+
       <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
         <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
         <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
