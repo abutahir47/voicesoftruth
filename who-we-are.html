@@ -11,36 +11,45 @@
 <body class="bg-white text-gray-900 min-h-screen flex flex-col justify-between" dir="ltr">
 
   <!-- Header -->
-  <header class="bg-white shadow-md w-full h-[64px] relative z-50">
-    <div class="w-full flex justify-between items-stretch h-full">
-      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
-        <span data-translate="site-title">Voices<br>of Truth</span>
-      </a>
-      <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
-        <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
-        <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
-        <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
-      </nav>
-      <div class="flex items-center space-x-2 rtl:space-x-reverse">
-        <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
-          <span class="w-6 h-0.5 bg-black"></span>
-          <span class="w-6 h-0.5 bg-black"></span>
-          <span class="w-6 h-0.5 bg-black"></span>
-        </button>
-        <div class="hidden md:block">
-          <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">العربية</button>
-        </div>
-        <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
-      </div>
-    </div>
+<header class="bg-white shadow-md w-full h-[64px] relative z-50">
+  <div class="w-full flex justify-between items-stretch h-full">
+    <!-- Logo & Text container -->
+    <a href="index.html"
+       class="bg-green-300 h-full flex items-center font-bold text-black text-sm uppercase leading-tight text-center w-[70px] md:w-[150px]">
+      <span class="hidden md:inline-block ml-4" data-translate="site-title">Voices<br>of Truth</span>
+      <img src="img/logo.png" alt="Voices of Truth Logo" class="h-12 w-auto ml-2" />
+    </a>
 
-    <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
-      <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
-      <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
-      <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
-      <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
+    <!-- Navigation -->
+    <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
+      <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
+      <a href="what-we-do.html" class="hover:text-green-600" data-translate="nav-what">What We Do</a>
+      <a href="get-involved.html" class="hover:text-green-600" data-translate="nav-involved">Get Involved</a>
     </nav>
-  </header>
+
+    <!-- Right side buttons -->
+    <div class="flex items-center space-x-2 rtl:space-x-reverse">
+      <button class="md:hidden flex flex-col justify-center items-center space-y-1 ml-2" onclick="toggleMenu()">
+        <span class="w-6 h-0.5 bg-black"></span>
+        <span class="w-6 h-0.5 bg-black"></span>
+        <span class="w-6 h-0.5 bg-black"></span>
+      </button>
+      <div class="hidden md:block">
+        <button onclick="toggleLanguage()" id="lang-toggle" class="text-sm font-medium hover:text-green-600 cursor-pointer">العربية</button>
+      </div>
+      <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
+    <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
+    <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
+    <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
+    <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
+  </nav>
+</header>
+
 
   <!-- Main Content -->
   <main class="p-6 flex-grow flex justify-center items-center">
