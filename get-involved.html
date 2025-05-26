@@ -28,13 +28,15 @@
 <body class="bg-white text-gray-900 m-0 p-0 flex flex-col min-h-screen" dir="ltr">
 
   <!-- Header -->
- <header class="bg-white shadow-md w-full h-[64px] relative z-50">
+<header class="bg-white shadow-md w-full h-[64px] relative z-50">
   <div class="w-full flex justify-between items-stretch h-full">
     <!-- Logo & Text container -->
     <a href="index.html"
-       class="bg-green-300 h-full flex items-center font-bold text-black text-sm uppercase leading-tight text-center w-[70px] md:w-[150px]">
-      <span class="hidden md:inline-block ml-4" data-translate="site-title">Voices<br>of Truth</span>
-      <img src="img/logo.png" alt="Voices of Truth Logo" class="h-12 w-auto ml-2" />
+       class="bg-green-300 h-full flex items-center font-bold text-black text-sm uppercase leading-tight text-center w-[70px] md:w-[150px] justify-start rtl:justify-end">
+      <span class="hidden md:inline-block ms-4 rtl:me-4 text-left rtl:text-right" data-translate="site-title">
+        Voices<br>of Truth
+      </span>
+      <img src="img/logo.png" alt="Voices of Truth Logo" class="h-12 w-auto ms-2 rtl:me-2" />
     </a>
 
     <!-- Navigation -->
@@ -57,15 +59,8 @@
       <a href="#" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
     </div>
   </div>
-
-  <!-- Mobile menu -->
-  <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
-    <a href="who-we-are.html" class="hover:text-green-600 block" data-translate="nav-who">Who We Are</a>
-    <a href="what-we-do.html" class="hover:text-green-600 block" data-translate="nav-what">What We Do</a>
-    <a href="get-involved.html" class="hover:text-green-600 block" data-translate="nav-involved">Get Involved</a>
-    <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
-  </nav>
 </header>
+
 
 
   <!-- Hero Section -->
