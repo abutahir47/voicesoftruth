@@ -31,11 +31,14 @@
 <header class="bg-white shadow-md w-full h-[64px] relative z-50">
   <div class="w-full flex justify-between items-stretch h-full">
     <a href="index.html"
-       class="bg-green-300 w-[180px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
-      <!-- Text with left padding -->
-      <span class="hidden md:inline-block pl-6" data-translate="site-title">Voices<br>of Truth</span>
-      <!-- Logo always visible -->
-      <img src="img/logo.png" alt="Voices of Truth Logo" class="h-12 w-auto" />
+       class="bg-green-300 h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center"
+       style="width: 220px;">
+      <div class="flex items-center space-x-6 ml-0" id="logo-text-wrapper">
+        <!-- Text with left padding -->
+        <span class="hidden md:inline-block pl-6" data-translate="site-title">Voices<br>of Truth</span>
+        <!-- Logo always visible -->
+        <img src="img/logo.png" alt="Voices of Truth Logo" class="h-12 w-auto" />
+      </div>
     </a>
     <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
       <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
@@ -63,6 +66,7 @@
     <div class="text-sm text-gray-600 mt-4 cursor-pointer hover:text-green-600" onclick="toggleLanguage()" id="lang-toggle-mobile">العربية</div>
   </nav>
 </header>
+
 
 
   <!-- Hero Section -->
