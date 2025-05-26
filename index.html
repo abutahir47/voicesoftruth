@@ -30,8 +30,11 @@
   <!-- Header -->
   <header class="bg-white shadow-md w-full h-[64px] relative z-50">
     <div class="w-full flex justify-between items-stretch h-full">
-      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center">
-        <span data-translate="site-title">Voices<br>of Truth</span>
+      <a href="index.html" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-black text-sm uppercase leading-tight text-center space-x-2 rtl:space-x-reverse">
+        <!-- Logo: always visible -->
+        <img src="img/logo.png" alt="Voices of Truth Logo" class="h-8 w-auto" />
+        <!-- Text: hidden on mobile, visible on md+ -->
+        <span class="hidden md:inline-block" data-translate="site-title">Voices<br>of Truth</span>
       </a>
       <nav class="hidden md:flex space-x-6 rtl:space-x-reverse text-sm font-medium uppercase items-center" id="main-nav">
         <a href="who-we-are.html" class="hover:text-green-600" data-translate="nav-who">Who We Are</a>
@@ -49,7 +52,7 @@
             العربية
           </button>
         </div>
-       <a href="https://madinah.com/voicesoftruth" target="_blank" rel="noopener" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
+        <a href="https://madinah.com/voicesoftruth" target="_blank" rel="noopener" class="bg-green-300 w-[140px] h-full flex items-center justify-center font-bold text-sm uppercase text-black hover:bg-green-400" data-translate="donate">Donate Now</a>
       </div>
     </div>
     <nav id="mobile-menu" class="md:hidden hidden flex-col absolute top-full left-0 w-full bg-white shadow-md text-sm font-medium uppercase px-4 py-4 space-y-4">
@@ -99,7 +102,7 @@
     </section>
   </main>
 
-  <!-- Footer: Always LTR, only icons, no "Follow us on" text -->
+  <!-- Footer -->
   <footer dir="ltr" class="bg-gray-900 text-gray-300 py-8 px-6 md:px-20 mt-10">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <p class="mb-6 md:mb-0 text-center md:text-left w-full md:w-auto">&copy; 2025 Voices of Truth. All rights reserved.</p>
